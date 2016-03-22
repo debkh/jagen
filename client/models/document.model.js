@@ -4,10 +4,13 @@
 
   function DocumentResource($resource) {
     return $resource('/api/document/:id/', {
-      id: '@id'
+      id: '@id',
     }, {
       get: {
         method: 'GET',
+        isArray: true,
+        params: {
+        },
       }
     });
   }
