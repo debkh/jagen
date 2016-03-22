@@ -3,6 +3,7 @@
 angular.module('jagenApp', [
   'jagenApp.auth',
   'jagenApp.admin',
+  'jagenApp.document',
   'ngMaterial',
   'ngMessages',
   'jagenApp.constants',
