@@ -8,7 +8,10 @@ angular.module('jagenApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'validation.match'
+  'angular-lodash',
+  'ngLodash',
+  'mm.acl',
+  'ngMaterial',
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider
