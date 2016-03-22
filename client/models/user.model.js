@@ -21,7 +21,7 @@ function UserResource($resource) {
   });
 }
 
-angular.module('jagenApp.auth')
+angular.module('jagenApp')
   .factory('User', UserResource);
 
 })();
