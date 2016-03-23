@@ -3,7 +3,9 @@
   
   angular.module('jagenApp.admin', [
     'jagenApp.auth',
-    'ui.router'
-  ]);
+    'ui.router',
+    'ngMaterial',
+    'md.data.table'
+  ])
 
 })();

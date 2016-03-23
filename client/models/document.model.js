@@ -8,7 +8,7 @@
     }, {
       get: {
         method: 'GET',
-        isArray: true,
+        // isArray: true,
         params: {
         },
       }
