@@ -1,8 +1,8 @@
 'use strict';
 
-(function () {
+(function() {
 
-  class AdminController {
+  class UserController {
     constructor(User) {
       // Use the User $resource to fetch all users
       this.users = User.query();
@@ -15,6 +15,6 @@
   }
 
   angular.module('jagenApp.admin')
-  .controller('AdminController', AdminController);
+  .controller('UserController', UserController);
 
 })();
