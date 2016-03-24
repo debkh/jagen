@@ -31,10 +31,10 @@
                     <!--<td md-cell ng-bind-html="item.text"></td>-->
                     <td md-cell>{{item.author}}</td>
                     <td md-cell class="control-buttons">
-                        <md-button ng-click="vm.modalCreateDocument(item)">
+                        <md-button ng-click="vm.modalCreateDocument(item)" aria-label="edit">
                             <md-icon md-font-icon="fa fa-pencil"></md-icon>
                         </md-button>
-                        <md-button ng-click="vm.remove(item)">
+                        <md-button ng-click="vm.remove(item)" aria-label="remove">
                             <md-icon md-font-icon="fa fa-trash-o"></md-icon>
                         </md-button>
                     </td>
