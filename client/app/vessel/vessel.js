@@ -5,13 +5,14 @@ angular.module('jagenApp')
     $stateProvider
       .state('vessels', {
         url: '/vessels',
-        controller: 'VesselsController',
-        templateUrl: 'app/vessels/vessels.html',
+        controller: 'VesselController',
+        controllerAs: 'vm',
+        templateUrl: 'app/vessel/list.html',
       })
     .state('vessels_add', {
         url: '/vessels/add',
-        templateUrl: 'app/vessels/add.html',
-        controller: 'VesselsController',
+        templateUrl: 'app/vessel/add.html',
+        controller: 'VesselController',
         controllerAs: 'vm'
     });
   });

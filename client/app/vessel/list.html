@@ -1,6 +1,7 @@
 <div>This is the vessels view.</div>
 <md-button class="md-raised md-accent" ui-sref-active="active">
-    <tr ng-repeat="vessels in vessel">
+    {{ vm.vessels }}
+    <tr ng-repeat="vessel in vm.vessels">
         <td>{{vessel.title}}</td>
         <td>{{vessel.number_sail}}</td>
     </tr>
