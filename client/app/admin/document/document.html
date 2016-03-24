@@ -5,7 +5,7 @@
             <div class="md-toolbar-tools">
                 <span>Documents</span>
                 <div flex></div>
-                <md-button class="md-raised" ng-click="">Create</md-button>
+                <md-button  class="md-raised" ng-click="vm.modalCreateDocument()">Create</md-button>
             </div>
         </md-toolbar>
 
@@ -15,7 +15,7 @@
                 <tr md-row>
                     <th md-column><span>#</span></th>
                     <th md-column md-order-by="title"><span>Title</span></th>
-                    <th md-column md-order-by="text"><span>Text</span></th>
+                    <!--<th md-column md-order-by="text"><span>Text</span></th>-->
                     <th md-column><span>Author</span></th>
                     <th md-column></th>
                 </tr>
@@ -28,7 +28,7 @@
                     ng-repeat="item in vm.documents | orderBy: vm.gridOptions.order">
                     <td md-cell>{{$index + 1}}</td>
                     <td md-cell>{{item.title}}</td>
-                    <td md-cell>{{item.text}}</td>
+                    <!--<td md-cell ng-bind-html="item.text"></td>-->
                     <td md-cell>{{item.author}}</td>
                     <td md-cell>Edit</td>
                 </tr>

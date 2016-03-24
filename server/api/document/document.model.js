@@ -3,7 +3,7 @@
 import mongoose from 'mongoose';
 
 var DocumentSchema = new mongoose.Schema({
-  idAuthor: {type: Number, required: true},
+  idAuthor: {type: Number},
   title: {type: String, required: true},
   text: {type: String, required: true}
 });

@@ -4,10 +4,10 @@
 
   class DocumentController {
 
-    constructor($mdToast, User, $timeout, DocumentService) {
-      this.$timeout = $timeout;
+    constructor($mdDialog, DocumentService, CreateDocumentService) {
+      this.$mdDialog = $mdDialog;
+      this.CreateDocumentService = CreateDocumentService;
       this.documentService = DocumentService;
-      this.$mdToast = $mdToast;
 
       this.documents = [];
       this.gridOptions = {
@@ -28,6 +28,11 @@
         this.documents = response;
         return this.documents;
       });
+    }
+
+    modalCreateDocument() {
+      this.CreateDocumentService.modal()
+      .catch(console.log.bind(console));
     }
 
   }

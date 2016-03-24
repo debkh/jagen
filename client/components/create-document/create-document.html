@@ -1,0 +1,33 @@
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <h2>Create Document</h2>
+    </div>
+</md-toolbar>
+<md-dialog-content>
+    <div class="md-dialog-content">
+        <!--<create-document form-data="formData"></create-document>-->
+        <div layout="column" class="inputdemoErrorsAdvanced" ng-cloak>
+            <md-content layout-padding>
+                <form name="vm.formSave" ng-submit="vm.save()" novalidate>
+                    <md-input-container class="md-block">
+                        <label>Title</label>
+                        <input ng-required="true" name="title" ng-model="vm.formData.title">
+                        <div ng-messages="vm.formSave.title.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-input-container class="md-block">
+                        <text-angular ng-model="vm.formData.text" ng-required="true" name="text"></text-angular>
+                        <div ng-messages="vm.formSave.text.$error" ng-if="vm.formSave.text.$touched || vm.formSave.$submitted">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+
+                    <md-button ng-click="vm.close()" class="md-raised md-primary">Cancel</md-button>
+                    <md-button type="submit" class="md-raised md-primary">Create</md-button>
+                </form>
+            </md-content>
+        </div>
+    </div>
+</md-dialog-content>

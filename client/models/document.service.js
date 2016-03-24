@@ -15,6 +15,13 @@
       });
     }
 
+    create(data){
+      return this.Document.save(data).$promise.then((response) => {
+        this.collection.push(response);
+        return response;
+      });
+    }
+
   }
 
   angular.module('jagenApp')
