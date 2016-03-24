@@ -76,6 +76,8 @@ export function show(req, res) {
 
 // Creates a new Document in the DB
 export function create(req, res) {
+  _.assignIn(req.body, {idAuthor: req.user._id});
+
   return Document.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
