@@ -29,7 +29,7 @@
                     <td md-cell>{{$index + 1}}</td>
                     <td md-cell>{{item.title}}</td>
                     <!--<td md-cell ng-bind-html="item.text"></td>-->
-                    <td md-cell>{{item.author}}</td>
+                    <td md-cell>{{item.user.email}}</td>
                     <td md-cell class="control-buttons">
                         <md-button ng-click="vm.modalCreateDocument(item)" aria-label="edit">
                             <md-icon md-font-icon="fa fa-pencil"></md-icon>

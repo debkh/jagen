@@ -4,10 +4,12 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 import {Schema} from 'mongoose';
+import Document from '../document/document.model';
 
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
+  // _document: { type: mongoose.Schema.Types.ObjectId, ref: 'Document' },
   name: String,
   email: {
     type: String,

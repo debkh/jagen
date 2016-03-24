@@ -61,7 +61,9 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Document.find().exec()
+  return Document.find()
+  .populate('user')
+  .exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -76,9 +78,21 @@ export function show(req, res) {
 
 // Creates a new Document in the DB
 export function create(req, res) {
-  _.assignIn(req.body, {idAuthor: req.user._id});
+  // _.assignIn(req.body, {idAuthor: req.user._id});
+  _.assignIn(req.body, {user: req.user._id});
+
+
+  // var document = new Document(req.body);
+  // document.save(function (err) {
+  //   if (err) return handleError(err);
+  // })
 
   return Document.create(req.body)
+    .then(function (response) {
+      return Document.findById(response._id)
+      .populate('user')
+      .exec();
+    })
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
@@ -88,7 +102,9 @@ export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  return Document.findById(req.params.id).exec()
+  return Document.findById(req.params.id)
+    .populate('user')
+    .exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
