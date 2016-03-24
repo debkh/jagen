@@ -5,12 +5,14 @@
             <div class="md-toolbar-tools">
                 <span>Documents</span>
                 <div flex></div>
-                <md-button  class="md-raised" ng-click="vm.modalCreateDocument()">Create</md-button>
+                <md-button class="md-raised" ng-click="vm.modalCreateDocument()">Create</md-button>
+                <md-button class="md-raised md-warn" ng-click="vm.remove(vm.selected)">Delete</md-button>
             </div>
         </md-toolbar>
 
+        {{vm.selected}}
         <md-table-container>
-            <table md-table>
+            <table md-table md-row-select ng-model="vm.selected" md-progress="promise">
                 <thead md-head md-order="vm.gridOptions.order">
                 <tr md-row>
                     <th md-column><span>#</span></th>
@@ -22,15 +24,21 @@
                 </thead>
                 <tbody md-body>
                 <tr md-row
-                    md-select="dessert"
-                    md-select-id="{{dessert.name}}"
-                    md-auto-select
+                    md-select="item"
+                    md-select-id="{{item._id}}"
                     ng-repeat="item in vm.documents | orderBy: vm.gridOptions.order">
                     <td md-cell>{{$index + 1}}</td>
                     <td md-cell>{{item.title}}</td>
                     <!--<td md-cell ng-bind-html="item.text"></td>-->
                     <td md-cell>{{item.author}}</td>
-                    <td md-cell>Edit</td>
+                    <td md-cell class="control-buttons">
+                        <md-button ng-click="">
+                            <md-icon md-font-icon="fa fa-pencil"></md-icon>
+                        </md-button>
+                        <md-button ng-click="vm.remove(item)">
+                            <md-icon md-font-icon="fa fa-trash-o"></md-icon>
+                        </md-button>
+                    </td>
                 </tr>
                 </tbody>
             </table>

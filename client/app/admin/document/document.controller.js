@@ -4,14 +4,17 @@
 
   class DocumentController {
 
-    constructor($mdDialog, DocumentService, CreateDocumentService) {
+    constructor($mdDialog, DocumentService, CreateDocumentService, lodash) {
+      this.lodash = lodash
       this.$mdDialog = $mdDialog;
       this.CreateDocumentService = CreateDocumentService;
-      this.documentService = DocumentService;
+      this.DocumentService = DocumentService;
 
       this.documents = [];
+      this.selected = [];
       this.gridOptions = {
         order: 'title',
+        rowSelection: true,
       };
 
       this.onInit();
@@ -23,7 +26,7 @@
     }
 
     getCollection(){
-      return this.documentService.getCollection()
+      return this.DocumentService.getCollection()
       .then((response) => {
         this.documents = response;
         return this.documents;
@@ -33,6 +36,14 @@
     modalCreateDocument() {
       this.CreateDocumentService.modal()
       .catch(console.log.bind(console));
+    }
+
+    remove(data) {
+      return this.DocumentService.remove(data)
+      .then((response) => {
+        this.lodash.remove(this.selected);
+        return response;
+      });
     }
 
   }
