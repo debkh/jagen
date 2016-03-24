@@ -5,18 +5,27 @@
         </md-button>
     </div>
     <div class="nav-buttons">
-        <md-button class="md-raised md-primary"><a ui-sref="signup">Sign up</a></md-button>
+        <md-button class="md-raised md-primary" ng-show="!nav.isLoggedIn()"><a ui-sref="signup">Sign up</a></md-button>
         <md-button class="md-raised md-accent" ng-hide="nav.isLoggedIn()" ui-sref-active="active">
             <a ui-sref="login">Login</a>
         </md-button>
-        <md-button class="md-raised md-accent" ng-show="nav.isLoggedIn()">
-            <p class="navbar-text">Hello {{ nav.getCurrentUser().name }}</p>
+        <md-button class="md-raised md-accent" ui-sref-active="active">
+            <a href="/vessels"><span class="glyphicon glyphicon-cog"></span>Vessel</a>
         </md-button>
-        <md-button class="md-raised md-accent" ng-show="nav.isLoggedIn()" ui-sref-active="active">
-            <a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span></a>
+        <md-button class="md-raised md-accent" ui-sref-active="active">
+            <a href="/vessels/add"><span class="glyphicon glyphicon-cog"></span>Add Vessel</a>
         </md-button>
-        <md-button class="md-raised md-accent" ng-show="nav.isLoggedIn()">
-            <a ui-sref="logout">Logout</a>
-        </md-button>
+        <div ng-if="nav.isLoggedIn()">
+            <span class="navbar-text">Hello {{ nav.getCurrentUser().name }}</span>
+            <md-button class="md-raised md-accent" ui-sref-active="active">
+                <a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
+            </md-button>
+            <md-button class="md-raised md-accent" ui-sref-active="active">
+                <a ui-sref="add_vessel"><span class="glyphicon glyphicon-cog"></span>Add Vessel</a>
+            </md-button>
+            <md-button class="md-raised md-accent">
+                <a ui-sref="logout">Logout</a>
+            </md-button>
+        </div>
     </div>
 </div>
