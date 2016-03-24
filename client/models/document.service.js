@@ -32,6 +32,10 @@
     }
 
     remove(data) {
+      if(this.lodash.isEmpty(data)){
+        return this.$q.reject(false);
+      }
+
       let confirm = this.$mdDialog.confirm()
       .title('Would you like to delete your documens?')
       .ok('YES')
