@@ -7,11 +7,13 @@
       this.$mdDialog = $mdDialog;
     }
 
-    modal() {
+    modal(data) {
       return this.$mdDialog.show({
         templateUrl: 'components/create-document/create-document.html',
         clickOutsideToClose: true,
         controllerAs: 'vm',
+        bindToController: true,
+        locals: {prefillingData: data},
         controller: ModalController
       });
       // .catch(console.log.bind(console))
@@ -22,6 +24,13 @@
     constructor($mdDialog, DocumentService) {
       this.DocumentService = DocumentService;
       this.$mdDialog = $mdDialog;
+      this.formData = {};
+
+      this.onInit();
+    }
+
+    onInit(){
+      this.formData = this.prefillingData;
     }
 
     save(){
@@ -30,7 +39,7 @@
       }
 
       // create document
-      this.DocumentService.create(this.formData)
+      this.DocumentService.save(this.formData)
       .then((response) => {
         this.$mdDialog.hide(response);
       });

@@ -10,7 +10,6 @@
             </div>
         </md-toolbar>
 
-        {{vm.selected}}
         <md-table-container>
             <table md-table md-row-select ng-model="vm.selected" md-progress="promise">
                 <thead md-head md-order="vm.gridOptions.order">
@@ -32,7 +31,7 @@
                     <!--<td md-cell ng-bind-html="item.text"></td>-->
                     <td md-cell>{{item.author}}</td>
                     <td md-cell class="control-buttons">
-                        <md-button ng-click="">
+                        <md-button ng-click="vm.modalCreateDocument(item)">
                             <md-icon md-font-icon="fa fa-pencil"></md-icon>
                         </md-button>
                         <md-button ng-click="vm.remove(item)">

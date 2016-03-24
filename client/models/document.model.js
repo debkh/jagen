@@ -6,9 +6,8 @@
     return $resource('/api/document/:id/', {
       id: '@id',
     }, {
-      get: {
-        method: 'GET',
-        // isArray: true,
+      update: {
+        method: 'PUT',
         params: {
         },
       }

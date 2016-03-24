@@ -18,9 +18,15 @@
       });
     }
 
-    create(data) {
-      return this.Document.save(data).$promise.then((response) => {
-        this.collection.push(response);
+    save(data) {
+      let action = data._id? 'update' : 'save';
+      angular.extend(data, {id: data._id});
+
+      return this.Document[action](data).$promise.then((response) => {
+        if(action == 'save'){
+          this.collection.push(response);
+        }
+
         return response;
       });
     }

@@ -33,8 +33,8 @@
       });
     }
 
-    modalCreateDocument() {
-      this.CreateDocumentService.modal()
+    modalCreateDocument(data) {
+      this.CreateDocumentService.modal(data)
       .catch(console.log.bind(console));
     }
 
