@@ -1,0 +1,11 @@
+<md-whiteframe class="md-whiteframe-3dp" layout="column">
+    <md-toolbar class="md-warn" >
+        <div class="md-toolbar-tools">
+            <h2 class="md-flex">{{vm.document.title}}</h2>
+        </div>
+    </md-toolbar>
+    <!--<md-content flex layout-padding>-->
+        <!--<h2 class="md-flex">{{vm.document.title}}</h2>-->
+    <!--</md-content>-->
+    <md-content flex layout-padding ng-bind-html="vm.document.text"></md-content>
+</md-whiteframe>

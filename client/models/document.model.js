@@ -19,6 +19,6 @@
   }
 
   angular.module('jagenApp')
-  .factory('Document', DocumentResource);
+  .factory('DocumentModel', DocumentResource);
 
 })();

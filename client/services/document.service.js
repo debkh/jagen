@@ -3,16 +3,25 @@
 (function () {
 
   class DocumentService {
-    constructor(Document, $q, lodash, $mdDialog) {
+    constructor(DocumentModel, $q, lodash, $mdDialog) {
       this.$mdDialog = $mdDialog
       this.lodash = lodash
       this.$q = $q
-      this.Document = Document
+      this.DocumentModel = DocumentModel
       this.collection = []
+      this.document = {};
+    }
+
+    get(data) {
+      return this.DocumentModel.get(data).$promise
+      .then((response) => {
+        angular.copy(response, this.document);
+        return this.document;
+      });
     }
 
     getCollection() {
-      return this.Document.query().$promise.then((response) => {
+      return this.DocumentModel.query().$promise.then((response) => {
         angular.copy(response, this.collection);
         return this.collection;
       });
@@ -36,7 +45,7 @@
         text:data.text,
       }
 
-      return this.Document[action](saveData).$promise.then((response) => {
+      return this.DocumentModel[action](saveData).$promise.then((response) => {
         if(action == 'save'){
           this.collection.push(response);
         }
@@ -75,7 +84,7 @@
     removeOneElement(data) {
       angular.extend(data, {id: data._id});
 
-      return this.Document.remove(data).$promise.then((response) => {
+      return this.DocumentModel.remove(data).$promise.then((response) => {
         this.lodash.remove(this.collection, {_id: data._id});
         return response;
       });

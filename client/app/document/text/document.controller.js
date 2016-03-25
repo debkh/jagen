@@ -2,16 +2,16 @@
 (function () {
 
   class DocumentController {
-    constructor(lodash, Document, User, $q) {
+    constructor(lodash, DocumentModel, User, $q) {
       // this.User = User;
       this.$q = $q;
-      this.Document = Document;
+      this.DocumentModel = DocumentModel;
       this.lodash = lodash;
       this.onInit();
     }
 
     onInit(){
-      this.Document.get({
+      this.DocumentModel.get({
         // type: 'document'
       }).$promise.then(function (response) {
         // debugger;
