@@ -5,7 +5,7 @@
         </md-toolbar>
         <div layout="column" ng-cloak>
             <md-content layout-padding>
-                <form name="vesselForm" ng-submit="vm.addVessel()" novalidate>
+                <form name="vesselForm" ng-submit="vm.addVessel(vesselForm)" novalidate>
                     {{ vm.vessel }}
                     <md-input-container class="md-block">
                         <label>Название парусного судна</label>
@@ -61,13 +61,6 @@
                     <md-input-container class="md-block">
                         <label>Экипаж не более (чел.):	</label>
                         <input md-no-asterisk name="crew" ng-model="vm.vessel.crew">
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                        <label>Тип судна:	</label>
-                        <md-select ng-model="type" required>
-                            <md-option value="Тип1">Тип 1</md-option>
-                            <md-option value="Тип2">Тип 2</md-option>
-                        </md-select>
                     </md-input-container>
                     <md-button class="md-raised md-primary" type="submit">Submit</md-button>
                 </form>

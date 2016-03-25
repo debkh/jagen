@@ -11,7 +11,7 @@ function VesselService($location, $http, $cookies, $q, appConfig, Util, User) {
     /**
      * Create a new vessel
      *
-     * @param  {Object}   user     - user info
+     * @param  {Object}   vessel     - vessel info
      * @param  {Function} callback - optional, function(error, user)
      * @return {Promise}
      */
@@ -30,7 +30,7 @@ function VesselService($location, $http, $cookies, $q, appConfig, Util, User) {
         })
         .catch(function(err) {
             alert('Error! Something went wrong');
-        });
+        }).$promise;
     }
 
   };
@@ -38,7 +38,7 @@ function VesselService($location, $http, $cookies, $q, appConfig, Util, User) {
   return Vessel;
 }
 
-angular.module('jagenApp')
+angular.module('jagenApp.vessel')
   .factory('Vessel', VesselService);
 
 })();

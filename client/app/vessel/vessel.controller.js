@@ -10,25 +10,30 @@ class VesselController {
     errors = {};
     //end-non-standard
 
-    constructor(Vessel, $state) {
+    constructor(Vessel, $state, $http) {
+        this.vessels = Vessel.query();
         this.Vessel = Vessel;
         this.$state = $state;
-        this.getVessel();
+        this.$http = $http;
     }
 
-    addVessel() {
-        //if (form.$valid) {
-            this.Vessel.createVessels(this.vessel)
+    addVessel(form) {
+        console.log(form);
+        if (form.$valid) {
+            this.vessel.$save(function() {
+                this.$state.go('vessels');
+            });
+            /*this.Vessel.createVessels(this.vessel)
             .then(() => {
                 // Logged in, redirect to home
-                this.$state.go('main');
-            });
-        //}
+                this.$state.go('vessels');
+            });*/
+        }
     }
 
     getVessel() {
-        console.log('getVessel');
-        this.Vessel.getVessels();
+        var data = this.Vessel.getVessels();
+        console.log(data);
     }
 }
 
