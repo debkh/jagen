@@ -12,6 +12,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
+      'client/bower_components/jquery/dist/jquery.js',
       'client/bower_components/angular/angular.js',
       'client/bower_components/angular-resource/angular-resource.js',
       'client/bower_components/angular-cookies/angular-cookies.js',
@@ -36,6 +37,10 @@ module.exports = function(config) {
       'client/bower_components/textAngular/dist/textAngular.js',
       'client/bower_components/textAngular/dist/textAngular-sanitize.js',
       'client/bower_components/textAngular/dist/textAngularSetup.js',
+      'client/bower_components/angular-file-upload/dist/angular-file-upload.min.js',
+      'client/bower_components/ng-file-upload/ng-file-upload.js',
+      'client/bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.js',
+      'client/bower_components/lf-ng-md-file-input/dist/lf-ng-md-file-input.min.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

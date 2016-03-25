@@ -20,9 +20,23 @@
 
     save(data) {
       let action = data._id? 'update' : 'save';
-      angular.extend(data, {id: data._id});
 
-      return this.Document[action](data).$promise.then((response) => {
+      // debugger;
+      // angular.extend(data, {id: data._id});
+      // delete data.user;
+
+      // var saveData = angular.copy(data);
+      // angular.extend(saveData, {id: saveData._id});
+      // delete saveData.user;
+
+      var saveData = {
+        id:data._id,
+        file:data.file,
+        title:data.title,
+        text:data.text,
+      }
+
+      return this.Document[action](saveData).$promise.then((response) => {
         if(action == 'save'){
           this.collection.push(response);
         }

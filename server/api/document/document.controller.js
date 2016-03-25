@@ -10,6 +10,8 @@
 'use strict';
 
 import _ from 'lodash';
+import * as fs from 'fs';
+import * as url from 'url';
 import Document from './document.model';
 
 function respondWithResult(res, statusCode) {
@@ -78,14 +80,7 @@ export function show(req, res) {
 
 // Creates a new Document in the DB
 export function create(req, res) {
-  // _.assignIn(req.body, {idAuthor: req.user._id});
   _.assignIn(req.body, {user: req.user._id});
-
-
-  // var document = new Document(req.body);
-  // document.save(function (err) {
-  //   if (err) return handleError(err);
-  // })
 
   return Document.create(req.body)
     .then(function (response) {
@@ -95,6 +90,25 @@ export function create(req, res) {
     })
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
+}
+
+export function uploadPhoto(req, res, next) {
+  if(!req.files.file){
+    next();
+    return;
+  }
+
+  var tmp_path = req.files.file.path;
+  var target_path = `client/assets/uploads/documents/${req.files.file.name}`;
+
+  fs.rename(tmp_path, target_path, function(err) {
+    if (err) throw err;
+    fs.unlink(tmp_path, function() {
+      if (err) throw err;
+      req.body.fileName = req.files.file.name;
+      next();
+    });
+  });
 }
 
 // Updates an existing Document in the DB

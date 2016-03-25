@@ -21,7 +21,8 @@
   }
 
   class ModalController{
-    constructor($mdDialog, DocumentService) {
+    constructor($mdDialog, DocumentService, lodash) {
+      this.lodash = lodash;
       this.DocumentService = DocumentService;
       this.$mdDialog = $mdDialog;
       this.formData = {};
@@ -39,6 +40,7 @@
       }
 
       // create document
+      this.formData.file = this.lodash.get(this.formData, 'files[0].lfFile');
       this.DocumentService.save(this.formData)
       .then((response) => {
         this.$mdDialog.hide(response);

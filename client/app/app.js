@@ -15,6 +15,9 @@ angular.module('jagenApp', [
   'ngLodash',
   'mm.acl',
   'ngMaterial',
+  // 'angularFileUpload',
+  // 'ngFileUpload',
+  'lfNgMdFileInput',
 ])
   .config(function($urlRouterProvider, $locationProvider) {
     $urlRouterProvider

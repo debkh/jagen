@@ -1,0 +1,21 @@
+<input type="file" class="ng-hide file-input">
+<md-button class="md-raised md-primary upload-button" aria-label="attach_file"> Choose file</md-button>
+<md-input-container md-no-float>
+    <input class="text-input" ng-model="vm.fileName" type="text" placeholder="No file chosen" ng-readonly="true">
+</md-input-container>
+
+<!--
+<input
+        type="file"
+        ngf-select
+        ng-model="vm.formData.file"
+        name="file"
+        ngf-pattern="'image/*'"
+        accept="image/*"
+        ngf-max-size="1MB"
+        required
+/>
+<div ng-messages="vm.formSave.file.$error" ng-if="vm.formSave.file.$touched || vm.formSave.$submitted">
+    <div ng-message="required">This is required.</div>
+    <div ng-message="maxSize">File too large {{vm.formData.file.size / 1000000|number:1}}MB: max 20M</div>
+</div>-->
