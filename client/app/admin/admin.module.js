@@ -6,9 +6,5 @@
     'textAngular',
     'froala',
   ])
-  .value('froalaConfig', {
-    toolbarInline: false,
-    placeholderText: 'Edit Your Content Here!'
-  });
-
+  
 })();
