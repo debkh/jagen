@@ -52,10 +52,14 @@ export default function(app) {
    * https://github.com/krakenjs/lusca
    */
   if ('test' !== env) {
+    var csrfMiddleware = lusca.csrf({
+      angular: true
+    });
+
     app.use(lusca({
-      csrf: {
-        angular: true
-      },
+      // csrf: {
+      //   angular: true
+      // },
       xframe: 'SAMEORIGIN',
       hsts: {
         maxAge: 31536000, //1 year, in seconds
@@ -64,6 +68,15 @@ export default function(app) {
       },
       xssProtection: true
     }));
+
+    app.use(function(req, res, next) {
+      // Paths that start with /account/upload don't need CSRF
+      if (/^\/api\/upload\/image/.test(req.originalUrl)) {
+        next();
+      } else {
+        csrfMiddleware(req, res, next);
+      }
+    });
   }
 
   app.set('appPath', path.join(config.root, 'client'));

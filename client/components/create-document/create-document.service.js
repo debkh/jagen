@@ -21,11 +21,54 @@
   }
 
   class ModalController{
-    constructor($mdDialog, DocumentService, lodash) {
+    constructor($mdDialog, DocumentService, lodash, $cookies) {
       this.lodash = lodash;
       this.DocumentService = DocumentService;
       this.$mdDialog = $mdDialog;
+      
       this.formData = {};
+      this.froalaOptions = {
+        requestHeaders: {
+          Authorization: 'Bearer ' + $cookies.get('token')
+        },
+        imageManagerLoadURL: false,
+        imageUploadURL: '/api/upload/image',
+        toolbarButtons: [
+          'fullscreen',
+          'bold',
+          'italic',
+          'underline',
+          'strikeThrough', 'subscript',
+          'superscript',
+          'fontFamily',
+          'fontSize',
+          '|',
+          'color',
+          'emoticons',
+          'inlineStyle',
+          'paragraphStyle',
+          '|',
+          'paragraphFormat',
+          'align',
+          'formatOL',
+          'formatUL',
+          'outdent',
+          'indent',
+          'quote',
+          'insertHR',
+          '-',
+          'undo',
+          'redo',
+          'clearFormatting',
+          'selectAll',
+          'html',
+          'insertTable',
+          'insertLink',
+          'insertVideo',
+          'insertImage',
+          // 'insertFile',
+        ]
+      };
 
       this.onInit();
     }

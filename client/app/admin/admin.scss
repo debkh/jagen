@@ -18,3 +18,16 @@ md-card {
     width: 250px;
   }
 }
+
+// FROALA text editor
+.fr-box{
+  .fr-popup {
+    .fr-buttons {
+      .fr-btn{
+        &:last-child{
+          display: none;
+        }
+      }
+    }
+  }
+}
