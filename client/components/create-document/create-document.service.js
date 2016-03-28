@@ -83,9 +83,12 @@
       }
 
       // create document
-      this.formData.file = this.lodash.get(this.formData, 'files[0].lfFile');
+      // this.formData.file = this.lodash.get(this.formData, 'files[0].lfFile');
       this.DocumentService.save(this.formData)
       .then((response) => {
+        // set response data to document
+        angular.extend(this.prefillingData, response);
+        // hide modal
         this.$mdDialog.hide(response);
       });
     }
