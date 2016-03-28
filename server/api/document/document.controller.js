@@ -72,7 +72,7 @@ export function index(req, res) {
 
 // Gets a single Document from the DB
 export function show(req, res) {
-  return Document.findById(req.params.id).exec()
+  return Document.findOne({slug: req.params.slug}).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -81,6 +81,17 @@ export function show(req, res) {
 // Creates a new Document in the DB
 export function create(req, res) {
   _.assignIn(req.body, {user: req.user._id});
+
+
+  // var qwe = new Document();
+  // qwe.title = 'frank ab';
+  // qwe.slug; // > frank-ab
+  // res.status(200).send(qwe.slug);
+
+  // var qwe = Document.create(req.body).then(function (response) {
+  //   res.status(200).send(response);
+  // })
+
 
   return Document.create(req.body)
     .then(function (response) {

@@ -6,7 +6,7 @@
     $stateProvider
     .state('document', {
       parent: 'main',
-      url: 'document/:id',
+      url: 'document/:slug',
       views: {
         'content': {
           controller: 'DocumentCtrl',
@@ -23,7 +23,7 @@
 
   getDocumentResolve.$inject = ['DocumentService', '$stateParams'];
   function getDocumentResolve(DocumentService, $stateParams) {
-    return DocumentService.get({id:$stateParams.id});
+    return DocumentService.get({actionId:$stateParams.slug});
   }
 
 })()

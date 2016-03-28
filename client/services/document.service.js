@@ -13,6 +13,7 @@
     }
 
     get(data) {
+      // angular.extend(data, {actionId: data.slug});
       return this.DocumentModel.get(data).$promise
       .then((response) => {
         angular.copy(response, this.document);
@@ -39,10 +40,11 @@
       // delete saveData.user;
 
       var saveData = {
-        id:data._id,
+        actionId:data._id,
         file:data.file,
         title:data.title,
         text:data.text,
+        slug:data.slug,
       }
 
       return this.DocumentModel[action](saveData).$promise.then((response) => {
@@ -82,7 +84,7 @@
     }
 
     removeOneElement(data) {
-      angular.extend(data, {id: data._id});
+      angular.extend(data, {actionId: data._id});
 
       return this.DocumentModel.remove(data).$promise.then((response) => {
         this.lodash.remove(this.collection, {_id: data._id});

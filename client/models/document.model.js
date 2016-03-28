@@ -2,8 +2,9 @@
 
 (function () {
   function DocumentResource($resource, RequestService) {
-    return $resource('/api/document/:id/', {
-      id: '@id',
+    return $resource('/api/document/:action/:actionId',{
+      action: '@action',
+      actionId: '@actionId',
     }, {
       update: {
         method: 'PUT',
