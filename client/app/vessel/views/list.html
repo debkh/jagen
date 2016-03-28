@@ -1,0 +1,10 @@
+<md-button ui-sref="vessel_create" class="md-raised md-primary">Add new vessel</md-button>
+<md-list ng-cloak ng-if="vc.vessels.length">
+    <md-subheader class="md-no-sticky">List vessels</md-subheader>
+    <md-list-item ng-repeat="vessel in vc.vessels" href="/vessel/{{ vessel._id }}">
+        <p> {{ vessel.title }} </p>
+        <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Edit</md-button>
+        <md-button class="md-raised md-warn" ng-click="vc.deleteVessel(vessel)">Delete</md-button>
+    </md-list-item>
+    <md-divider></md-divider>
+</md-list>

@@ -5,14 +5,26 @@ angular.module('jagenApp')
     $stateProvider
       .state('vessels', {
         url: '/vessels',
-        controller: 'VesselController',
-        controllerAs: 'vm',
-        templateUrl: 'app/vessel/list.html',
+          templateUrl: 'app/vessel/views/list.html',
+          controller: 'vListController',
+          controllerAs: 'vc',
       })
-    .state('vessels_add', {
-        url: '/vessels/add',
-        templateUrl: 'app/vessel/add.html',
-        controller: 'VesselController',
-        controllerAs: 'vm'
-    });
+    .state('vessel_create', {
+        url: '/vessel/create',
+        templateUrl: 'app/vessel/views/create.html',
+        controller: 'vCreateController',
+        controllerAs: 'vc'
+    })
+    .state('vessel_edit', {
+        url: '/vessel/edit/:id',
+        templateUrl: 'app/vessel/views/edit.html',
+        controller: 'vViewController',
+        controllerAs: 'vc'
+    })
+    .state('vessel_view', {
+        url: '/vessel/:id',
+        templateUrl: 'app/vessel/views/view.html',
+        controller: 'vViewController',
+        controllerAs: 'vc'
+    })
   });
