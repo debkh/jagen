@@ -69,14 +69,14 @@ export default function(app) {
       xssProtection: true
     }));
 
-    app.use(function(req, res, next) {
-      // Paths that start with /account/upload don't need CSRF
-      if (/^\/api\/upload\/image/.test(req.originalUrl)) {
-        next();
-      } else {
-        csrfMiddleware(req, res, next);
-      }
-    });
+    // app.use(function(req, res, next) {
+    //   // Paths that start with /account/upload don't need CSRF
+    //   if (/^\/api\/upload\/image/.test(req.originalUrl)) {
+    //     next();
+    //   } else {
+    //     csrfMiddleware(req, res, next);
+    //   }
+    // });
   }
 
   app.set('appPath', path.join(config.root, 'client'));

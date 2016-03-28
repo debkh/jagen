@@ -17,8 +17,10 @@ export default function(app) {
   app.use('/api/users', require('./api/user'));
   app.use('/api/document', require('./api/document'));
   app.use('/api/upload', require('./api/upload'));
+  app.use('/api/menu', require('./api/menu'));
 
   app.use('/auth', require('./auth').default);
+  // app.use('/menu', require('./menu').default);
 
   // All undefined asset or api routes should return a 404
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

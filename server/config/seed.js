@@ -6,6 +6,8 @@
 'use strict';
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
+import Document from '../api/document/document.model';
+import Menu from '../api/menu/menu.model';
 
 Thing.find({}).remove()
   .then(() => {

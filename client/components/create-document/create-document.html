@@ -23,6 +23,19 @@
                         <input name="slug" ng-model="vm.formData.slug">
                     </md-input-container>
 
+
+                    <!--MENU-->
+                    <!--<md-input-container class="md-block">-->
+                        <!--<label>Select menu</label>-->
+                        <!--&lt;!&ndash;{{vm.formData.menu}}&ndash;&gt;-->
+                        <!--<md-select name="menu" ng-model="vm.formData.menu" multiple>-->
+                            <!--<md-option ng-value="option._id" ng-repeat="option in vm.MenuService.collection">{{option.title}}</md-option>-->
+                        <!--</md-select>-->
+                        <!--&lt;!&ndash;<div class="errors" ng-messages="myForm.myModel.$error" ng-if="myForm.$dirty">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<div ng-message="required">Required</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--</md-input-container>-->
+
                     <md-input-container class="md-block">
                         <textarea froala="vm.froalaOptions" ng-model="vm.formData.text" ng-required="true" name="text" aria-label="text-editor"></textarea>
                         <!--<text-angular ng-model="vm.formData.text" ng-required="true" name="text" aria-label="text-editor"></text-angular>-->
@@ -31,6 +44,7 @@
                         </div>
                     </md-input-container>
 
+                    <!--FILE UPLOAD-->
                     <!--<div class="md-block">-->
                         <!--<lf-ng-md-file-input name="files" lf-files="vm.formData.files" lf-filesize="10MB" lf-mimetype="image/*"></lf-ng-md-file-input>-->
                         <!--<div ng-messages="vm.formSave.files.$error" style="color:red;">-->

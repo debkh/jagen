@@ -74,6 +74,7 @@ module.exports = function(config) {
       'client/bower_components/moment/moment.js',
       'client/bower_components/fullcalendar/dist/fullcalendar.js',
       'client/bower_components/angular-ui-calendar/src/calendar.js',
+      'client/bower_components/bootstrap/dist/js/bootstrap.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

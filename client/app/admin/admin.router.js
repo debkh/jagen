@@ -9,7 +9,12 @@
       templateUrl: 'app/admin/admin.html',
       controller: 'AdminController',
       controllerAs: 'admin',
-      authenticate: 'admin'
+      authenticate: 'admin',
+      resolve:{
+        menuCollection: function (MenuService) {
+          return MenuService.getCollection();
+        }
+      }
     })
 
     .state('documents', {
@@ -17,6 +22,14 @@
       url: '/documents',
       templateUrl: 'app/admin/document/document.html',
       controller: 'DocumentController',
+      controllerAs: 'vm',
+    })
+
+    .state('menu', {
+      parent: 'admin',
+      url: '/menu',
+      templateUrl: 'app/admin/menu/menu.html',
+      controller: 'MenuController',
       controllerAs: 'vm',
     })
 
