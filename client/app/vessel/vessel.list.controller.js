@@ -8,20 +8,20 @@ class vListController {
     vessels = [];
     //end-non-standard
 
-    constructor(Vessel, $state, $location) {
+    constructor(Vessel, $state, $location, query) {
         this.Vessel = Vessel;
         this.$state = $state;
         this.$location = $location;
+        this.query = query;
         this.listVessels();
     }
 
     listVessels() {
-        this.vessels = this.Vessel.query();
+        this.vessels = this.Vessel.query({query: this.query});
     }
 
 
     deleteVessel(vessel) {
-        console.log(vessel);
         vessel.$remove({id: vessel._id});
         this.vessels.splice(this.vessels.indexOf(vessel), 1);
     }

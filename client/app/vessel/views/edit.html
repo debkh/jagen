@@ -5,7 +5,7 @@
         </md-toolbar>
         <div layout="column" ng-cloak>
             <md-content layout-padding>
-                <form name="vesselForm" ng-submit="vc.addVessels(vesselForm)" novalidate>
+                <form name="vesselForm" ng-submit="vc.updateVessels(vesselForm)" novalidate>
                     <md-input-container class="md-block">
                         <label>Название парусного судна</label>
                         <input md-maxlength="30" required md-no-asterisk name="title" ng-model="vc.vessel.title">

@@ -61,7 +61,9 @@ function handleError(res, statusCode) {
 
 // Gets a list of Vessels
 export function index(req, res) {
-  return Vessel.find().exec()
+  var query = req.query.query && JSON.parse(req.query.query);
+    console.log(JSON.parse(req.query.query));
+  return Vessel.find(query).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
@@ -76,6 +78,7 @@ export function show(req, res) {
 
 // Creates a new Vessel in the DB
 export function create(req, res) {
+  req.body.user = req.user;
   return Vessel.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

@@ -9,17 +9,19 @@ class vCreateController {
     vessel = {};
     //end-non-standard
 
-    constructor(Vessel, $state, $location) {
+    constructor(Vessel, $state, $location, Auth) {
         this.Vessel = Vessel;
         this.$state = $state;
         this.$location = $location;
+        this.currentUser = Auth.getCurrentUser();
     }
 
-    addVessels(form) {
+    createVessels(form) {
         if (form.$valid) {
+            console.log(this.vessel);
             this.Vessel.save(this.vessel).$promise.then(function () {
                 //this.$location.url("/vessels");
-            });;
+            });
         }
     }
 }

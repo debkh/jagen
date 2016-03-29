@@ -1,10 +1,24 @@
-<md-button ui-sref="vessel_create" class="md-raised md-primary">Add new vessel</md-button>
-<md-list ng-cloak ng-if="vc.vessels.length">
-    <md-subheader class="md-no-sticky">List vessels</md-subheader>
-    <md-list-item ng-repeat="vessel in vc.vessels" href="/vessel/{{ vessel._id }}">
-        <p> {{ vessel.title }} </p>
-        <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Edit</md-button>
-        <md-button class="md-raised md-warn" ng-click="vc.deleteVessel(vessel)">Delete</md-button>
-    </md-list-item>
-    <md-divider></md-divider>
-</md-list>
+<div flex layout="row" layout-align="center center">
+    <div flex-sm="100" flex-gt-sm="90" flex-gt-md="70" flex-gt-lg="50" class="md-whiteframe-z2">
+        <md-toolbar class="md-warn">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Личный Кабинет</h2>
+            </div>
+        </md-toolbar>
+        <div layout="column" ng-cloak>
+            <md-content layout-padding>
+                <md-button ui-sref="vessel_create" class="md-raised md-primary">Добавить новое судно</md-button>
+                <md-list ng-cloak ng-if="vc.vessels.length">
+                    <md-subheader class="md-no-sticky">Список Ваших парусных суднов</md-subheader>
+                    <md-list-item ng-repeat="vessel in vc.vessels">
+                        <p> {{ vessel.title }} </p>
+                        <md-button href="/vessel/{{ vessel._id }}" class="md-raised md-default ">Подробно</md-button>
+                        <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Редактировать</md-button>
+                        <md-button class="md-raised md-warn" ng-click="vc.deleteVessel(vessel)">Удалить</md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                </md-list>
+            </md-content>
+        </div>
+    </div>
+</div>
