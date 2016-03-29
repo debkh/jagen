@@ -8,7 +8,7 @@
                 <form name="vesselForm" ng-submit="vc.createVessels(vesselForm)" novalidate>
                     <md-input-container class="md-block">
                         <label>Название парусного судна *</label>
-                        <input md-no-asterisk ng-model="vc.vessel.title" md-maxlength="30" required>
+                        <input md-no-asterisk name="title" ng-model="vc.vessel.title" md-maxlength="30" required>
                         <div ng-messages="vesselForm.title.$error">
                             <div ng-message="required">This is required.</div>
                             <div ng-message="md-maxlength">The name has to be less than 10 characters long.</div>
@@ -16,54 +16,54 @@
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>№ на парусе *</label>
-                        <input md-no-asterisk ng-model="vc.vessel.number_sail" required>
+                        <input md-no-asterisk name="number_sail" ng-model="vc.vessel.number_sail" required>
                         <div ng-messages="vesselForm.number_sail.$error">
                             <div ng-message="required">This is required.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>№ гос.регистрации</label>
-                        <input md-no-asterisk ng-model="vc.vessel.number_registration">
+                        <input md-no-asterisk name="number_registration" ng-model="vc.vessel.number_registration">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Парусность основная (кв.м.)</label>
-                        <input md-no-asterisk ng-model="vc.vessel.windage">
+                        <input md-no-asterisk name="windage" ng-model="vc.vessel.windage">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Материал</label>
-                        <input md-no-asterisk ng-model="vc.vessel.material">
+                        <input md-no-asterisk name="material" ng-model="vc.vessel.material">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Цвет корпуса</label>
-                        <input md-no-asterisk ng-model="vc.vessel.color_body" placeholder="white">
+                        <input md-no-asterisk name="color_body" ng-model="vc.vessel.color_body" placeholder="white">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Мощность мотора (л/с):	</label>
-                        <input md-no-asterisk ng-model="vc.vessel.power_motor">
+                        <input md-no-asterisk name="power_motor" ng-model="vc.vessel.power_motor">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Длина корпуса (м.):	</label>
-                        <input md-no-asterisk ng-model="vc.vessel.length_body">
+                        <input md-no-asterisk name="length_body" ng-model="vc.vessel.length_body">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Ширина корпуса (м.):	</label>
-                        <input md-no-asterisk ng-model="vc.vessel.with_body">
+                        <input md-no-asterisk name="with_body" ng-model="vc.vessel.with_body">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Высота надв. борта или трамплина над водой (клиренс), (м.):	</label>
-                        <input md-no-asterisk ng-model="vc.vessel.height">
+                        <input md-no-asterisk name="height" ng-model="vc.vessel.height">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Грузоподъёмность (кг):	</label>
-                        <input md-no-asterisk ng-model="vc.vessel.capacity">
+                        <input md-no-asterisk name="capacity" ng-model="vc.vessel.capacity">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Экипаж не более (чел.):	</label>
-                        <input md-no-asterisk ng-model="vc.vessel.crew">
+                        <input md-no-asterisk name="crew" ng-model="vc.vessel.crew">
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Тип судна *</label>
-                        <md-select ng-model="vc.vessel.type_vessel" required>
+                        <md-select name="type_vessel" ng-model="vc.vessel.type_vessel" required>
                             <md-option value="Катамаран">Катамаран</md-option>
                             <md-option value="Тримаран">Тримаран</md-option>
                             <md-option value="Однокорпусник">Однокорпусник</md-option>
@@ -74,7 +74,7 @@
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Тип корпуса *</label>
-                        <md-select ng-model="vc.vessel.type_body" required>
+                        <md-select name="type_body" ng-model="vc.vessel.type_body" required>
                             <md-option value="Катамаран">Надувной</md-option>
                             <md-option value="Тримаран">Жесткий</md-option>
                         </md-select>
@@ -84,11 +84,11 @@
                     </md-input-container>
                     <md-input-container class="md-block">
                         <label>Тип конструкции *</label>
-                        <md-select ng-model="vc.vessel.type_body" required>
+                        <md-select name="type_construction" ng-model="vc.vessel.type_construction" required>
                             <md-option value="Катамаран">Разборный</md-option>
                             <md-option value="Тримаран">Не разборный</md-option>
                         </md-select>
-                        <div ng-messages="vesselForm.type_body.$error">
+                        <div ng-messages="vesselForm.type_construction.$error">
                             <div ng-message="required">This is required.</div>
                         </div>
                     </md-input-container>
