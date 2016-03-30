@@ -61,9 +61,8 @@ function handleError(res, statusCode) {
 
 // Gets a list of Vessels
 export function index(req, res) {
-  var query = req.query.query && JSON.parse(req.query.query);
-    console.log(JSON.parse(req.query.query));
-  return Vessel.find(query).exec()
+console.log(req.user.id);
+  return Vessel.find({_user: req.user.id}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

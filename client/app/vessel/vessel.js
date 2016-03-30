@@ -15,12 +15,14 @@ angular.module('jagenApp')
           },
           resolve: {
               query: function(Auth){
-                  return {user: Auth.getCurrentUser()._id};
+                  console.log(Auth.getCurrentUser()._id);
+                  return {};
               }
           },
           authenticate: true
       })
     .state('vessel_create', {
+
         url: 'vessel/create',
         parent: 'main',
         views: {

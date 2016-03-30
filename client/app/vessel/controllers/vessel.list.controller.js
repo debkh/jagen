@@ -17,7 +17,7 @@ class vListController {
     }
 
     listVessels() {
-        this.vessels = this.Vessel.query({query: this.query});
+        this.vessels = this.Vessel.query();
     }
 
 

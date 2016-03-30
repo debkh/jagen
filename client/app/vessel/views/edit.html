@@ -1,22 +1,24 @@
 <div flex layout="row" layout-align="center center">
     <div flex-sm="100" flex-gt-sm="90" flex-gt-md="70" flex-gt-lg="50" class="md-whiteframe-z2">
         <md-toolbar class="md-warn">
-
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Редактирование судна - "{{ vc.vessel.title }}"</h2>
+            </div>
         </md-toolbar>
         <div layout="column" ng-cloak>
             <md-content layout-padding>
                 <form name="vesselForm" ng-submit="vc.updateVessels(vesselForm)" novalidate>
                     <md-input-container class="md-block">
-                        <label>Название парусного судна</label>
-                        <input md-maxlength="30" required md-no-asterisk name="title" ng-model="vc.vessel.title">
+                        <label>Название парусного судна *</label>
+                        <input md-no-asterisk name="title" ng-model="vc.vessel.title" md-maxlength="30" required>
                         <div ng-messages="vesselForm.title.$error">
                             <div ng-message="required">This is required.</div>
                             <div ng-message="md-maxlength">The name has to be less than 10 characters long.</div>
                         </div>
                     </md-input-container>
                     <md-input-container class="md-block">
-                        <label>№ на парусе</label>
-                        <input md-no-asterisk name="number_sail" ng-model="vc.vessel.number_sail">
+                        <label>№ на парусе *</label>
+                        <input md-no-asterisk name="number_sail" ng-model="vc.vessel.number_sail" required>
                         <div ng-messages="vesselForm.number_sail.$error">
                             <div ng-message="required">This is required.</div>
                         </div>
@@ -61,7 +63,38 @@
                         <label>Экипаж не более (чел.):	</label>
                         <input md-no-asterisk name="crew" ng-model="vc.vessel.crew">
                     </md-input-container>
-                    <md-button class="md-raised md-primary" type="submit">Updaet</md-button>
+                    <md-input-container class="md-block">
+                        <label>Тип судна *</label>
+                        <md-select name="type_vessel" ng-model="vc.vessel.type_vessel" required>
+                            <md-option value="Катамаран">Катамаран</md-option>
+                            <md-option value="Тримаран">Тримаран</md-option>
+                            <md-option value="Однокорпусник">Однокорпусник</md-option>
+                        </md-select>
+                        <div ng-messages="vesselForm.type_vessel.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Тип корпуса *</label>
+                        <md-select name="type_body" ng-model="vc.vessel.type_body" required>
+                            <md-option value="Катамаран">Надувной</md-option>
+                            <md-option value="Тримаран">Жесткий</md-option>
+                        </md-select>
+                        <div ng-messages="vesselForm.type_body.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Тип конструкции *</label>
+                        <md-select name="type_construction" ng-model="vc.vessel.type_construction" required>
+                            <md-option value="Катамаран">Разборный</md-option>
+                            <md-option value="Тримаран">Не разборный</md-option>
+                        </md-select>
+                        <div ng-messages="vesselForm.type_construction.$error">
+                            <div ng-message="required">This is required.</div>
+                        </div>
+                    </md-input-container>
+                    <md-button class="md-raised md-primary" type="submit">Update</md-button>
                 </form>
             </md-content>
         </div>

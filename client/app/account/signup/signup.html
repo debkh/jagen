@@ -1,51 +1,60 @@
-<div layout="column" layout-padding ng-cloak>
-    <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
-        <md-content class="md-no-momentum">
-            <md-input-container class="md-block">
-                <label>Name</label>
-                <input minlength="5" required  ng-model="vm.user.name" name="name" type="text" >
-                <div ng-messages="form.name.$error">
-                    <div ng-message="required">This is required.</div>
-                    <div ng-message="minlength">The name has to be more than 5 characters.</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Client Email</label>
-                <input type="email" name="email" ng-model="vm.user.email" minlength="10" maxlength="100"
-                       ng-pattern="/^.+@.+\..+$/" required mongoose-error/>
-                <div ng-messages="form.email.$error" role="alert">
-                    <div ng-message="required">This is required.</div>
-                    <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
-                        Your email must be between 10 and 100 characters long and look like an e-mail address.
-                    </div>
-                    <div ng-message="mongoose">{{ vm.errors.email }}</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Password</label>
-                <input type="password" name="password" ng-model="vm.user.password" required minlength="3" >
-                <div ng-messages="form.password.$error">
-                    <div ng-message="required">This is required.</div>
-                    <div ng-message="minlength">The password has to be more than 3 characters.</div>
-                </div>
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>Confirm Password"</label>
-                <input type="password" name="confirmPassword" ng-model="vm.user.confirmPassword"
-                       match="vm.user.password"
-                       required >
-                <div ng-messages="form.confirmPassword.$error">
-                    <div ng-message="required">This is required.</div>
-                    <div ng-message="match">Passwords must match..</div>
-                </div>
-            </md-input-container>
-            <md-button class="md-raised md-primary btn-register" type="submit">Register</md-button>
-        </md-content>
-    </form>
+<div flex layout="row" layout-align="center center">
+    <div flex-sm="100" flex-gt-sm="90" flex-gt-md="70" flex-gt-lg="50" class="md-whiteframe-z2">
+        <md-toolbar class="md-warn">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Регистрация</h2>
+            </div>
+        </md-toolbar>
+        <div layout="column" layout-padding ng-cloak>
+            <form class="form" name="form" ng-submit="vm.register(form)" novalidate>
+                <md-content class="md-no-momentum">
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input minlength="5" required  ng-model="vm.user.name" name="name" type="text" >
+                        <div ng-messages="form.name.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="minlength">The name has to be more than 5 characters.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Client Email</label>
+                        <input type="email" name="email" ng-model="vm.user.email" minlength="10" maxlength="100"
+                               ng-pattern="/^.+@.+\..+$/" required mongoose-error/>
+                        <div ng-messages="form.email.$error" role="alert">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+                                Your email must be between 10 and 100 characters long and look like an e-mail address.
+                            </div>
+                            <div ng-message="mongoose">{{ vm.errors.email }}</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Password</label>
+                        <input type="password" name="password" ng-model="vm.user.password" required minlength="3" >
+                        <div ng-messages="form.password.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="minlength">The password has to be more than 3 characters.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Confirm Password"</label>
+                        <input type="password" name="confirmPassword" ng-model="vm.user.confirmPassword"
+                               match="vm.user.password"
+                               required >
+                        <div ng-messages="form.confirmPassword.$error">
+                            <div ng-message="required">This is required.</div>
+                            <div ng-message="match">Passwords must match..</div>
+                        </div>
+                    </md-input-container>
+                    <md-button class="md-raised md-primary btn-register" type="submit">Register</md-button>
+                </md-content>
+            </form>
 
-    <div class="row">
-        <div class="col-sm-4 col-md-3">
-            <oauth-buttons classes="btn-block"></oauth-buttons>
+            <div class="row">
+                <div class="col-sm-4 col-md-3">
+                    <oauth-buttons classes="btn-block"></oauth-buttons>
+                </div>
+            </div>
         </div>
     </div>
 </div>

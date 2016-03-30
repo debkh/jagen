@@ -9,18 +9,23 @@ class vCreateController {
     vessel = {};
     //end-non-standard
 
-    constructor(Vessel, $state, $location, Auth) {
+    constructor(Vessel, $http, $state, $location, Auth) {
         this.Vessel = Vessel;
         this.$state = $state;
+        this.$http = $http;
         this.$location = $location;
         this.currentUser = Auth.getCurrentUser();
+    }
+
+    $onInit(){
+
     }
 
     createVessels(form) {
         if (form.$valid) {
             console.log(this.vessel);
-            this.Vessel.save(this.vessel).$promise.then(function () {
-                //this.$location.url("/vessels");
+            this.Vessel.save(this.vessel).$promise.then(()=> {
+                this.$state.go('vessels');
             });
         }
     }

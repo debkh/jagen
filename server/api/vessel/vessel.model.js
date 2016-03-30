@@ -15,7 +15,10 @@ var VesselSchema = new mongoose.Schema({
   height: String,
   capacity: String,
   crew: String,
-  user: {
+  type_vessel: String,
+  type_body: String,
+  type_construction: String,
+  _user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User'
   }

@@ -5,9 +5,14 @@ angular.module('jagenApp')
     $stateProvider
       .state('login', {
         url: '/login',
-        templateUrl: 'app/account/login/login.html',
-        controller: 'LoginController',
-        controllerAs: 'vm'
+        parent: 'main',
+          views: {
+              'content': {
+                  templateUrl: 'app/account/login/login.html',
+                  controller: 'LoginController',
+                  controllerAs: 'vm',
+              }
+          },
       })
       .state('logout', {
         url: '/logout?referrer',
@@ -23,9 +28,14 @@ angular.module('jagenApp')
       })
       .state('signup', {
         url: '/signup',
-        templateUrl: 'app/account/signup/signup.html',
-        controller: 'SignupController',
-        controllerAs: 'vm'
+        parent: 'main',
+        views: {
+          'content': {
+              templateUrl: 'app/account/signup/signup.html',
+              controller: 'SignupController',
+              controllerAs: 'vm',
+          }
+        },
       })
       .state('settings', {
         url: '/settings',

@@ -22,9 +22,10 @@ class vViewController {
 
 
     updateVessels(form) {
+        console.log(form);
         if (form.$valid) {
-            this.Vessel.update({id : this.vessel._id}, this.vessel).$promise.then(function () {
-                //this.$location.url("/vessels");
+            this.Vessel.update({id : this.vessel._id}, this.vessel).$promise.then(()=> {
+                this.$state.go("vessels");
             });
             this.showSimpleToast('Информация обновлена');
         }

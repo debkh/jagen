@@ -7,10 +7,39 @@
         </md-toolbar>
         <div layout="column" ng-cloak>
             <md-content layout-padding>
-                <md-button ui-sref="vessel_create" class="md-raised md-primary">Добавить новое судно</md-button>
-                <md-list ng-cloak ng-if="vc.vessels.length">
-                    <md-subheader class="md-no-sticky">Список Ваших парусных суднов</md-subheader>
+                <md-list ng-cloak>
+                    <md-subheader class="md-no-sticky">
+                        <b>Список Ваших парусных суднов</b>
+                    </md-subheader>
+                    <md-button ui-sref="vessel_create" class="md-raised md-primary">Добавить новое судно</md-button>
                     <md-list-item ng-repeat="vessel in vc.vessels">
+                        <p> {{ vessel.title }} </p>
+                        <md-button href="/vessel/{{ vessel._id }}" class="md-raised md-default ">Подробно</md-button>
+                        <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Редактировать</md-button>
+                        <md-button class="md-raised md-warn" ng-click="vc.deleteVessel(vessel)">Удалить</md-button>
+                    </md-list-item>
+                    <md-divider></md-divider>
+
+                    <md-subheader class="md-no-sticky">
+                        <b>Участие в экипаже других судов или купленные вами существующие судна</b>
+                    </md-subheader>
+                    <md-list-item ng-repeat="vessel in vc.vessels2">
+                        <p> {{ vessel.title }} </p>
+                        <md-button href="/vessel/{{ vessel._id }}" class="md-raised md-default ">Подробно</md-button>
+                        <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Редактировать</md-button>
+                        <md-button class="md-raised md-warn" ng-click="vc.deleteVessel(vessel)">Удалить</md-button>
+                    </md-list-item>
+                    <p>
+                        При нажатии на кнопку с любым из этих статусов, можно просмотреть данные заявки и если она ещё не
+                        "в печати", то ещё возможно отредактировать данные.
+                    </p>
+                    <md-divider></md-divider>
+
+                    <md-subheader class="md-no-sticky">
+                        <b>Участники экипажа</b>
+                    </md-subheader>
+                    <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Добавить участника</md-button>
+                    <md-list-item ng-repeat="vessel in vc.vessels2">
                         <p> {{ vessel.title }} </p>
                         <md-button href="/vessel/{{ vessel._id }}" class="md-raised md-default ">Подробно</md-button>
                         <md-button href="/vessel/edit/{{ vessel._id }}" class="md-raised md-primary">Редактировать</md-button>
