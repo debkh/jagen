@@ -25,12 +25,12 @@ var VesselSchema = new mongoose.Schema({
 });
 
 VesselSchema.pre('find', function(next){
-    this.populate('user', 'name email');
+    this.populate('_user', 'name email');
     next();
 });
 
 VesselSchema.pre('findOne', function(next){
-    this.populate('user', 'name email');
+    this.populate('_user', 'name email');
     next();
 });
 

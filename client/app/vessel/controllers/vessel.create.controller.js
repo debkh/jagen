@@ -3,7 +3,7 @@
 
 (function() {
 
-class vCreateController {
+class vesselCreateController {
     //start-non-standard
     vessels = [];
     vessel = {};
@@ -32,6 +32,6 @@ class vCreateController {
 }
 
 angular.module('jagenApp')
-    .controller('vCreateController', vCreateController);
+    .controller('vesselCreateController', vesselCreateController);
 
 })();

@@ -61,6 +61,23 @@
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
+                <md-menu>
+                    <button ng-click="$mdOpenMenu()">
+                        Судна
+                    </button>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-click="" ui-sref="vessels">
+                                Мои судна
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ui-sref="vessel_create">
+                                Добавить судно
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </md-menu-bar>
         </div>
     <!--</md-toolbar>-->

@@ -15,13 +15,17 @@ angular.module('jagenApp', [
   'ngLodash',
   'mm.acl',
   'ngMaterial',
+  'md.data.table',
   // 'angularFileUpload',
   // 'ngFileUpload',
   'lfNgMdFileInput',
 ])
-  .config(function($urlRouterProvider, $locationProvider) {
+  .config(function($urlRouterProvider, $locationProvider, $mdIconProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+    $mdIconProvider
+      .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
   });

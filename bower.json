@@ -16,7 +16,7 @@
     "ng-lodash": "^0.4.0",
     "angular-acl": "^0.1.5",
     "angular-material": "^1.0.6",
-    "angular-material-data-table": "^0.9.14",
+    "angular-material-data-table": "^0.10.2",
     "textAngular": "^1.5.0",
     "jquery": "^2.2.2",
     "angular-file-upload": "^2.2.0",

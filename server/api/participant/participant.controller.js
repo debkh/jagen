@@ -1,16 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/vessels              ->  index
- * POST    /api/vessels              ->  create
- * GET     /api/vessels/:id          ->  show
- * PUT     /api/vessels/:id          ->  update
- * DELETE  /api/vessels/:id          ->  destroy
+ * GET     /api/participants              ->  index
+ * POST    /api/participants              ->  create
+ * GET     /api/participants/:id          ->  show
+ * PUT     /api/participants/:id          ->  update
+ * DELETE  /api/participants/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import Vessel from './vessel.model';
+import Participant from './participant.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -59,44 +59,44 @@ function handleError(res, statusCode) {
   };
 }
 
-// Gets a list of Vessels
+// Gets a list of Participants
 export function index(req, res) {
-  return Vessel.find({_user: req.user.id}).exec()
+    console.log(req.params);
+  return Participant.find({_vessel: '56fce2fc1cdc4f160b8b2051'}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Vessel from the DB
+// Gets a single Participant from the DB
 export function show(req, res) {
-  return Vessel.findById(req.params.id).exec()
+  return Participant.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Vessel in the DB
+// Creates a new Participant in the DB
 export function create(req, res) {
-  req.body._user = req.user;
-  return Vessel.create(req.body)
+  return Participant.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
 
-// Updates an existing Vessel in the DB
+// Updates an existing Participant in the DB
 export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
-  return Vessel.findById(req.params.id).exec()
+  return Participant.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Vessel from the DB
+// Deletes a Participant from the DB
 export function destroy(req, res) {
-  return Vessel.findById(req.params.id).exec()
+  return Participant.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

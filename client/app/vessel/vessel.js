@@ -9,13 +9,12 @@ angular.module('jagenApp')
           views: {
               'content': {
                   templateUrl: 'app/vessel/views/list.html',
-                  controller: 'vListController',
+                  controller: 'vesselListController',
                   controllerAs: 'vc',
               }
           },
           resolve: {
-              query: function(Auth){
-                  console.log(Auth.getCurrentUser()._id);
+              query: function(){
                   return {};
               }
           },
@@ -28,7 +27,7 @@ angular.module('jagenApp')
         views: {
             'content': {
                 templateUrl: 'app/vessel/views/create.html',
-                controller: 'vCreateController',
+                controller: 'vesselCreateController',
                 controllerAs: 'vc',
             }
         },
@@ -40,7 +39,7 @@ angular.module('jagenApp')
         views: {
             'content': {
                 templateUrl: 'app/vessel/views/edit.html',
-                controller: 'vViewController',
+                controller: 'vesselViewController',
                 controllerAs: 'vc',
             }
         },
@@ -52,7 +51,7 @@ angular.module('jagenApp')
         views: {
             'content': {
                 templateUrl: 'app/vessel/views/view.html',
-                controller: 'vViewController',
+                controller: 'vesselViewController',
                 controllerAs: 'vc',
             }
         },

@@ -5,21 +5,14 @@
         </md-button>
     </div>
     <div class="nav-buttons">
-        <md-button class="md-raised md-primary" ng-show="!nav.isLoggedIn()"><a ui-sref="signup">Sign up</a></md-button>
-        <md-button class="md-raised md-accent" ng-hide="nav.isLoggedIn()" ui-sref-active="active">
-            <a ui-sref="login">Login</a>
-        </md-button>
+        <div ng-if="!nav.isLoggedIn()">
+            <a ui-sref="signup" class="md-raised md-primary md-button">Sign up</a>
+            <a ui-sref="login" class="md-raised md-accent md-button">Login</a>
+        </div>
         <div ng-if="nav.isLoggedIn()">
             <span class="navbar-text">Hello {{ nav.getCurrentUser().name }}</span>
-            <md-button class="md-raised md-accent" ui-sref-active="active">
-                <a ui-sref="settings"><span class="glyphicon glyphicon-cog"></span>Settings</a>
-            </md-button>
-            <md-button class="md-raised md-accent">
-                <a ui-sref="logout">Logout</a>
-            </md-button>
-            <md-button class="md-raised md-accent" ui-sref-active="active">
-                <a ui-sref="vessels">Судна</a>
-            </md-button>
+            <a ui-sref="logout" class="md-raised md-accent md-button">Logout</a>
+            <a ui-sref="settings" class="md-raised md-button md-button">Settings</a>
         </div>
     </div>
 </div>

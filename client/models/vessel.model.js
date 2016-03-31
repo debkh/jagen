@@ -11,11 +11,6 @@
           params: {
           },
       },
-      delete: {
-          method: 'DELETE',
-          params: {
-          },
-      }
     });
   }
 

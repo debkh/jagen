@@ -3,11 +3,17 @@
 
 (function() {
 
-class vViewController {
+class vesselViewController {
     //start-non-standard
     vessel = {};
     //end-non-standard
 
+    /**
+     * @param Vessel
+     * @param $state
+     * @param $stateParams
+     * @param $mdToast
+     */
     constructor(Vessel, $state, $stateParams, $mdToast) {
         this.Vessel = Vessel;
         this.$state = $state;
@@ -16,11 +22,18 @@ class vViewController {
         this.getVessel();
     }
 
+    /**
+     * Get ifo vessels
+     */
     getVessel() {
         this.vessel = this.Vessel.get({id: this.id});
     }
 
 
+    /**
+     * Update vessel
+     * @param form
+     */
     updateVessels(form) {
         console.log(form);
         if (form.$valid) {
@@ -32,6 +45,11 @@ class vViewController {
     }
 
 
+    /**
+     * Show info window
+     *
+     * @param text
+     */
     showSimpleToast (text) {
         this.$mdToast.show(
             this.$mdToast.simple({
@@ -45,6 +63,6 @@ class vViewController {
 }
 
 angular.module('jagenApp')
-    .controller('vViewController', vViewController);
+    .controller('vesselViewController', vesselViewController);
 
 })();

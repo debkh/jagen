@@ -4,7 +4,7 @@ angular.module('jagenApp')
   .config(function($stateProvider) {
     $stateProvider
       .state('login', {
-        url: '/login',
+        url: 'login',
         parent: 'main',
           views: {
               'content': {
@@ -27,7 +27,7 @@ angular.module('jagenApp')
         }
       })
       .state('signup', {
-        url: '/signup',
+        url: 'signup',
         parent: 'main',
         views: {
           'content': {
@@ -38,10 +38,15 @@ angular.module('jagenApp')
         },
       })
       .state('settings', {
-        url: '/settings',
-        templateUrl: 'app/account/settings/settings.html',
-        controller: 'SettingsController',
-        controllerAs: 'vm',
+        url: 'settings',
+        parent: 'main',
+        views: {
+          'content': {
+              templateUrl: 'app/account/settings/settings.html',
+              controller: 'SettingsController',
+              controllerAs: 'vm',
+          }
+        },
         authenticate: true
       });
   })
