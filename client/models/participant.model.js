@@ -3,24 +3,20 @@
 (function () {
 
   function ParticipantResource($resource) {
-    return $resource('/api/participants/:id', {
+    return $resource('/api/participants/:controller/:id', {
       id: '@id',
     }, {
-        get: {
-            method: 'GET',
-            params: {
-                _vessel: '56fce2fc1cdc4f160b8b2051'
-            }
-        },
       update: {
           method: 'PUT',
           params: {
           },
       },
-      getParicipant: {
+
+      byVessel: {
         method: 'GET',
+        isArray: true,
         params: {
-          controller: 'participant'
+            controller: 'vessel',
         }
       }
     });

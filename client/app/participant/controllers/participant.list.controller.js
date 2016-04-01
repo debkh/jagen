@@ -21,7 +21,8 @@ class participantListController {
      */
     listParticipant() {
         console.log(this.vessel);
-        this.participants = this.Participant.get({_vessel: this.vessel._id}, function(response){
+
+        this.participants = this.Participant.byVessel({id:this.vessel._id}, function(response) {
             console.log(response);
         });
     }
@@ -32,14 +33,14 @@ class participantListController {
      *
      * @param vessel_id
      */
-    addParticipant(vessel_id) {
+    addParticipant(vessel) {
         this.$mdDialog.show({
             controller: 'participantCreateController',
             controllerAs: 'pc',
             templateUrl: '/app/participant/views/create.html',
             parent: angular.element(document.body),
             locals: {
-                vessel_id: vessel_id
+                vessel: vessel
             },
             clickOutsideToClose:true,
             fullscreen: true

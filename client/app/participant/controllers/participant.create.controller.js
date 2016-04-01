@@ -6,17 +6,16 @@ class participantCreateController {
     participant = {};
     //end-non-standard
 
-    constructor($state, Participant, $mdDialog, vessel_id) {
+    constructor($state, Participant, $mdDialog, vessel) {
         this.Participant = Participant;
         this.$state = $state;
         this.$mdDialog = $mdDialog;
-        this.vessel_id = vessel_id;
-        console.log(vessel_id);
+        this.vessel = vessel;
     }
 
     createParticipant(form) {
         if (form.$valid) {
-            this.participant._vessel = this.vessel_id;
+            this.participant._vessel = this.vessel._id;
             console.log(this.participant)
             this.Participant.save(this.participant).$promise.then(()=> {
                 this.$mdDialog.hide();

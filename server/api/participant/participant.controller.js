@@ -61,14 +61,16 @@ function handleError(res, statusCode) {
 
 // Gets a list of Participants
 export function index(req, res) {
-    console.log(req.params);
-  return Participant.find({_vessel: '56fce2fc1cdc4f160b8b2051'}).exec()
+  console.log(req.params);
+  return Participant.find({_vessel: req.params.id}).exec()
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
 // Gets a single Participant from the DB
 export function show(req, res) {
+    console.log(req.params);
+    console.log(req.params);
   return Participant.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))

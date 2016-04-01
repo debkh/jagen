@@ -70,6 +70,7 @@ module.exports = function(config) {
       'client/bower_components/froala-wysiwyg-editor/js/plugins/url.min.js',
       'client/bower_components/froala-wysiwyg-editor/js/plugins/video.min.js',
       'client/bower_components/angular-froala/src/angular-froala.js',
+      'client/bower_components/material-calendar/dist/angular-material-calendar.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

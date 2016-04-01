@@ -1,49 +1,44 @@
-<div flex layout="row" layout-align="center center">
-    <div flex-sm="100" flex-gt-sm="90" flex-gt-md="70" flex-gt-lg="50" class="md-whiteframe-z2">
-        <md-toolbar class="md-warn">
-            <div class="md-toolbar-tools">
-                <h2 class="md-flex">Settings</h2>
-            </div>
-        </md-toolbar>
-        <div layout="column" layout-padding ng-cloak>
-            <form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
-                <md-content class="md-no-momentum">
-                    <md-input-container class="md-block">
-                      <label>Current Password</label>
-                      <input ng-model="vm.user.oldPassword" type="password" name="password" required mongoose-error>
-                      <div ng-messages="form.password.$error" role="alert">
-                          <div ng-message="required">This is required.</div>
-                          <div ng-message="mongoose">{{ vm.errors.other }}</div>
-                      </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                      <label>New Password</label>
-                      <input ng-model="vm.user.newPassword" type="password" name="newPassword" required minlength="3">
-                      <div ng-messages="form.newPassword.$error" role="alert">
-                          <div ng-message="required">This is required.</div>
-                          <div ng-message="minlength" ng-if="form.$submitted || form.newPassword.$touched">
-                              Password must be at least 3 characters.
-                          </div>
-                      </div>
-                    </md-input-container>
-                    <md-input-container class="md-block">
-                      <label>Confirm New Password</label>
-                      <input ng-model="vm.user.confirmPassword" type="password" name="confirmPassword" required
-                             minlength="3" match="vm.user.newPassword">
-                      <div ng-messages="form.confirmPassword.$error" role="alert">
-                          <div ng-message="required">This is required.</div>
-                          <div ng-message="minlength" ng-if="form.$submitted || form.newPassword.$touched">
-                              Password must be at least 3 characters.
-                          </div>
-                          <div ng-message="match" ng-if="form.confirmPassword.$error.match && vm.submitted">
-                              Passwords don't match.
-                          </div>
-                      </div>
-                    </md-input-container>
-                    <p class="help-block"> {{ vm.message }} </p>
-                    <md-button class="md-raised md-primary" type="submit">Save changes</md-button>
-                </md-content>
-            </form>
-        </div>
+<md-toolbar class="md-warn">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">Settings</h2>
     </div>
-</div>
+</md-toolbar>
+
+<form class="form" name="form" ng-submit="vm.changePassword(form)" novalidate>
+    <md-content class="md-no-momentum">
+        <md-input-container class="md-block">
+          <label>Current Password</label>
+          <input ng-model="vm.user.oldPassword" type="password" name="password" required mongoose-error>
+          <div ng-messages="form.password.$error" role="alert">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="mongoose">{{ vm.errors.other }}</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>New Password</label>
+          <input ng-model="vm.user.newPassword" type="password" name="newPassword" required minlength="3">
+          <div ng-messages="form.newPassword.$error" role="alert">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="minlength" ng-if="form.$submitted || form.newPassword.$touched">
+                  Password must be at least 3 characters.
+              </div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>Confirm New Password</label>
+          <input ng-model="vm.user.confirmPassword" type="password" name="confirmPassword" required
+                 minlength="3" match="vm.user.newPassword">
+          <div ng-messages="form.confirmPassword.$error" role="alert">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="minlength" ng-if="form.$submitted || form.newPassword.$touched">
+                  Password must be at least 3 characters.
+              </div>
+              <div ng-message="match" ng-if="form.confirmPassword.$error.match && vm.submitted">
+                  Passwords don't match.
+              </div>
+          </div>
+        </md-input-container>
+        <p class="help-block"> {{ vm.message }} </p>
+        <md-button class="md-raised md-primary" type="submit">Save changes</md-button>
+    </md-content>
+</form>

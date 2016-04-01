@@ -1,18 +1,11 @@
-<div layout="row" layout-padding class="bg-dark-blue nav-dark" layout-align="space-between center"  ng-controller="NavbarController">
-    <div>
-        <md-button ng-repeat="item in nav.menu" ui-sref-active="active">
-            <a ui-sref="{{item.state}}">{{item.title}}</a>
-        </md-button>
-    </div>
-    <div class="nav-buttons">
-        <div ng-if="!nav.isLoggedIn()">
-            <a ui-sref="signup" class="md-raised md-primary md-button">Sign up</a>
-            <a ui-sref="login" class="md-raised md-accent md-button">Login</a>
+<md-toolbar>
+    <h3>
+        <md-button ng-repeat="item in nav.menu"  ui-sref-active="active" ui-sref="{{item.state}}">{{item.title}}</md-button>
+        <div style="float: right;">
+            <md-button ui-sref="signup" ng-if="!nav.isLoggedIn()">Sign up</md-button>
+            <md-button ui-sref="login" ng-if="!nav.isLoggedIn()">Login</md-button>
+            <md-button ui-sref="logout" ng-if="nav.isLoggedIn()">Logout</md-button>
+            <md-button ui-sref="settings" ng-if="nav.isLoggedIn()">Settings</md-button>
         </div>
-        <div ng-if="nav.isLoggedIn()">
-            <span class="navbar-text">Hello {{ nav.getCurrentUser().name }}</span>
-            <a ui-sref="logout" class="md-raised md-accent md-button">Logout</a>
-            <a ui-sref="settings" class="md-raised md-button md-button">Settings</a>
-        </div>
-    </div>
-</div>
+    </h3>
+</md-toolbar>
