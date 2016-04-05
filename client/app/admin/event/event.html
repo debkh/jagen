@@ -1,0 +1,44 @@
+<md-content laout="column" flex>
+    <md-card>
+
+        <md-toolbar class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <span>Events</span>
+                <div flex></div>
+                <md-button class="md-raised" ng-click="vm.modalCreateEvent()">Создать</md-button>
+            </div>
+        </md-toolbar>
+
+        <md-table-container>
+            <table md-table md-row-selvmt ng-model="vm.selvmted" md-progress="promise">
+                <thead md-head md-order="vm.gridOptions.order">
+                <tr md-row>
+                    <th md-column><span>#</span></th>
+                    <th md-column md-order-by="title"><span>Title</span></th>
+                    <!--<th md-column md-order-by="text"><span>Text</span></th>-->
+                    <th md-column><span>Date</span></th>
+                    <th md-column></th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row
+                    md-selvmt="event"
+                    md-selvmt-id="{{ event._id }}"
+                    ng-repeat="event in vm.events | orderBy: vm.gridOptions.order">
+                    <td md-cell>{{ $index + 1 }}</td>
+                    <td md-cell>{{ event.title }}</td>
+                    <td md-cell>{{ event.user.email }}</td>
+                    <td md-cell class="control-buttons">
+                        <md-button ng-click="vm.modalCreateDocument(event)" aria-label="edit">
+                            <md-icon md-font-icon="fa fa-pencil"></md-icon>
+                        </md-button>
+                        <md-button ng-click="vm.remove(event)" aria-label="remove">
+                            <md-icon md-font-icon="fa fa-trash-o"></md-icon>
+                        </md-button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+    </md-card>
+</md-content>

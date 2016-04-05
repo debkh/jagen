@@ -10,7 +10,7 @@ angular.module('jagenApp')
               'content': {
                   templateUrl: 'app/vessel/views/list.html',
                   controller: 'vesselListController',
-                  controllerAs: 'vc',
+                  controllerAs: 'vm',
               }
           },
           resolve: {
@@ -28,7 +28,7 @@ angular.module('jagenApp')
             'content': {
                 templateUrl: 'app/vessel/views/create.html',
                 controller: 'vesselCreateController',
-                controllerAs: 'vc',
+                controllerAs: 'vm',
             }
         },
         authenticate: true
@@ -40,7 +40,7 @@ angular.module('jagenApp')
             'content': {
                 templateUrl: 'app/vessel/views/edit.html',
                 controller: 'vesselViewController',
-                controllerAs: 'vc',
+                controllerAs: 'vm',
             }
         },
         authenticate: true
@@ -52,7 +52,7 @@ angular.module('jagenApp')
             'content': {
                 templateUrl: 'app/vessel/views/view.html',
                 controller: 'vesselViewController',
-                controllerAs: 'vc',
+                controllerAs: 'vm',
             }
         },
         authenticate: true

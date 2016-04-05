@@ -24,7 +24,8 @@
     "lf-ng-md-file-input": "^1.4.2",
     "froala-wysiwyg-editor": "^2.2.2",
     "angular-froala": "^2.2.2",
-    "material-calendar": "^0.2.14"
+    "material-calendar": "^0.2.14",
+    "angular-ui-calendar": "^1.0.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.5.0"

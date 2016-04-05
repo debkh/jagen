@@ -7,9 +7,10 @@ class participantListController {
     vessel = {};
     //end-non-standard
 
-    constructor($state, Participant, $mdDialog, vessel) {
+    constructor($state, Participant, ModalService, vessel, $mdDialog) {
         this.Participant = Participant;
         this.$state = $state;
+        this.ModalService = ModalService;
         this.$mdDialog = $mdDialog;
         this.vessel = vessel;
         this.listParticipant();
@@ -20,10 +21,8 @@ class participantListController {
      * @return array
      */
     listParticipant() {
-        console.log(this.vessel);
-
-        this.participants = this.Participant.byVessel({id:this.vessel._id}, function(response) {
-            console.log(response);
+        this.Participant.byVessel({id:this.vessel._id}, (response) => {
+            this.participants = response;
         });
     }
 
@@ -34,17 +33,11 @@ class participantListController {
      * @param vessel_id
      */
     addParticipant(vessel) {
-        this.$mdDialog.show({
-            controller: 'participantCreateController',
-            controllerAs: 'pc',
+        this.ModalService.show({
             templateUrl: '/app/participant/views/create.html',
-            parent: angular.element(document.body),
-            locals: {
-                vessel: vessel
-            },
-            clickOutsideToClose:true,
-            fullscreen: true
-        });
+            locals: {vessel: vessel},
+            controller: 'participantCreateController',
+        }).catch(console.log.bind(console));
     };
 
 
@@ -54,17 +47,11 @@ class participantListController {
      * @param participant
      */
     editParticipant(participant) {
-        this.$mdDialog.show({
-            controller: 'participantEditController',
-            controllerAs: 'pc',
+        this.ModalService.show({
             templateUrl: '/app/participant/views/edit.html',
-            parent: angular.element(document.body),
-            locals: {
-                participant: participant
-            },
-            clickOutsideToClose:true,
-            fullscreen: true
-        });
+            locals: {participant: participant},
+            controller: 'participantEditController',
+        }).catch(console.log.bind(console));
     }
 
     /**
@@ -76,6 +63,14 @@ class participantListController {
         participant.$remove({id: participant._id});
         this.participants.splice(this.participants.indexOf(participant), 1);
     }
+
+
+    /**
+     * Cancel dialog window
+     */
+    cancel() {
+        this.$mdDialog.cancel();
+    };
 
 }
 

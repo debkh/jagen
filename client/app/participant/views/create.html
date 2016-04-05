@@ -1,14 +1,14 @@
 <md-dialog aria-label="Add participant"  ng-cloak>
     <md-toolbar>
         <div class="md-toolbar-tools">
-            <h2>Добавление участника в экипаж - <b>{{ pc.vessel.title }}</b></h2>
+            <h2>Добавление участника в экипаж - <b>{{ vm.vessel.title }}</b></h2>
             <span flex></span>
-            <md-button class="md-icon-button" ng-click="cancel()">
-                <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+            <md-button class="md-icon-button" aria-label="Close Dialog" ng-click="vm.cancel()">
+                <md-icon md-font-icon="fa fa-close"></md-icon>
             </md-button>
         </div>
     </md-toolbar>
-    <form name="participantForm" ng-submit="pc.createParticipant(participantForm)" novalidate>
+    <form name="participantForm" ng-submit="vm.createParticipant(participantForm)" novalidate>
         <md-dialog-content>
             <div class="md-dialog-content">
                 <div ng-include="'/app/participant/views/_form.html'"></div>

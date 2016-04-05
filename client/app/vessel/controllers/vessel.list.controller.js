@@ -18,13 +18,15 @@ class vesselListController {
      * @param $mdMedia
      * @param Participant
      */
-    constructor($state, $location, $mdDialog, $mdMedia, Vessel, Participant) {
+    constructor(lodash, $state, $location, $mdDialog, $mdMedia, Vessel, Participant, ModalService) {
+        this.lodash = lodash;
         this.Vessel = Vessel;
         this.$state = $state;
         this.$location = $location;
         this.$mdDialog = $mdDialog;
         this.$mdMedia = $mdMedia;
         this.Participant = Participant;
+        this.ModalService = ModalService;
         this.status = '  ';
         this.listVessels();
     }
@@ -33,35 +35,47 @@ class vesselListController {
      * Get list vessels
      */
     listVessels() {
-        this.vessels = this.Vessel.query();
+        this.Vessel.query((response) => {
+            this.vessels = response;
+        });
     }
 
     /**
      * Delete vessel
+     *
      * @param vessel
      */
     deleteVessel(vessel) {
-        vessel.remove({id: vessel._id});
-        this.vessels.splice(this.vessels.indexOf(vessel), 1);
+        let confirm = this.$mdDialog.confirm()
+            .title('Вы уверены что хотите удалить это судно?')
+            .ok('Да')
+            .cancel('Отмена');
+
+        return this.$mdDialog.show(confirm).then(() => {
+            vessel.$remove({id: vessel._id});
+            this.vessels.splice(this.vessels.indexOf(vessel), 1);
+        });
     }
 
+    /**
+     * Show participant vessel(crew)
+     *
+     * @param vessel
+     */
     showCrew(vessel) {
-        this.$mdDialog.show({
-            controller: 'participantListController',
-            controllerAs: 'pc',
+        this.ModalService.show({
             templateUrl: '/app/vessel/views/crew.html',
-            parent: angular.element(document.body),
-            locals: {
-                vessel: vessel
-            },
-            clickOutsideToClose:true,
-            fullscreen: true
-        })
-        .then((answer) => {
-            this.status = 'You said the information was "' + answer + '".';
-        }, () => {
-            this.status = 'You cancelled the dialog.';
-        });
+            locals: {vessel: vessel},
+            controller: 'participantListController',
+        }).catch(console.log.bind(console));
+    };
+
+
+    /**
+     * Cancel dialog window
+     */
+    cancel() {
+        this.$mdDialog.cancel();
     };
 }
 

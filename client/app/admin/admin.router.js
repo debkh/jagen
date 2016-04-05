@@ -27,6 +27,14 @@
       controller: 'UserController',
       controllerAs: 'vm',
     })
+
+    .state('admin_events', {
+      parent: 'admin',
+      url: '/events',
+      templateUrl: 'app/admin/event/event.html',
+      controller: 'EventController',
+      controllerAs: 'vm',
+    })
   });
 
 })();

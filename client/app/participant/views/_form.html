@@ -1,6 +1,6 @@
 <md-input-container class="md-block">
     <label>Фамилия *</label>
-    <input md-no-asterisk name="last_name" ng-model="pc.participant.last_name" md-maxlength="20" required>
+    <input md-no-asterisk name="last_name" ng-model="vm.participant.last_name" md-maxlength="20" required>
     <div ng-messages="participantForm.last_name.$error">
         <div ng-message="required">This is required.</div>
         <div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>
@@ -8,28 +8,28 @@
 </md-input-container>
 <md-input-container class="md-block">
     <label>Имя *</label>
-    <input md-no-asterisk name="first_name" ng-model="pc.participant.first_name" md-maxlength="20" required>
+    <input md-no-asterisk name="first_name" ng-model="vm.participant.first_name" md-maxlength="20" required>
     <div ng-messages="participantForm.first_name.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Отчество *</label>
-    <input md-no-asterisk name="middle_name" ng-model="pc.participant.middle_name">
+    <input md-no-asterisk name="middle_name" ng-model="vm.participant.middle_name">
     <div ng-messages="participantForm.middle_name.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>День рождение *</label>
-    <input md-no-asterisk name="dob" ng-model="pc.participant.dob" md-maxlength="20">
+    <input md-no-asterisk name="dob" ng-model="vm.participant.dob" md-maxlength="20">
     <div ng-messages="participantForm.dob.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Мобильный *</label>
-    <input md-no-asterisk name="phone" ng-model="pc.participant.phone" md-maxlength="20">
+    <input md-no-asterisk name="phone" ng-model="vm.participant.phone" md-maxlength="20">
     <div ng-messages="participantForm.phone.$error">
         <div ng-message="required">This is required.</div>
         <div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>
@@ -37,14 +37,14 @@
 </md-input-container>
 <md-input-container class="md-block">
     <label>Телефон родственников</label>
-    <input md-no-asterisk name="phone_family" ng-model="pc.participant.phone_family">
+    <input md-no-asterisk name="phone_family" ng-model="vm.participant.phone_family">
     <div ng-messages="participantForm.phone_family.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Email *</label>
-    <input md-no-asterisk name="email" type="email" ng-model="pc.participant.email">
+    <input md-no-asterisk name="email" type="email" ng-model="vm.participant.email">
     <div ng-messages="participantForm.email.$error">
         <div ng-message="required">This is required.</div>
         <div ng-message="md-maxlength">The name has to be less than 20 characters long.</div>
@@ -52,39 +52,39 @@
 </md-input-container>
 <md-input-container class="md-block">
     <label>Спортивный разряд</label>
-    <input md-no-asterisk name="sports_category" ng-model="pc.participant.sports_category">
+    <input md-no-asterisk name="sports_category" ng-model="vm.participant.sports_category">
 </md-input-container>
 <md-input-container class="md-block">
     <label>Страна</label>
-    <input md-no-asterisk name="country" ng-model="pc.participant.country">
+    <input md-no-asterisk name="country" ng-model="vm.participant.country">
     <div ng-messages="participantForm.country.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Индекс</label>
-    <input md-no-asterisk name="index" ng-model="pc.participant.index">
+    <input md-no-asterisk name="index" ng-model="vm.participant.index">
     <div ng-messages="participantForm.index.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Город</label>
-    <input md-no-asterisk name="city" ng-model="pc.participant.city">
+    <input md-no-asterisk name="city" ng-model="vm.participant.city">
     <div ng-messages="participantForm.city.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Улица</label>
-    <input md-no-asterisk name="street" ng-model="pc.participant.street">
+    <input md-no-asterisk name="street" ng-model="vm.participant.street">
     <div ng-messages="participantForm.street.$error">
         <div ng-message="required">This is required.</div>
     </div>
 </md-input-container>
 <md-input-container class="md-block">
     <label>Дом/квартира *</label>
-    <input md-no-asterisk name="home" ng-model="pc.participant.home">
+    <input md-no-asterisk name="home" ng-model="vm.participant.home">
     <div ng-messages="participantForm.first_name.$error">
         <div ng-message="required">This is required.</div>
     </div>

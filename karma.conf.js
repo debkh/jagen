@@ -71,6 +71,9 @@ module.exports = function(config) {
       'client/bower_components/froala-wysiwyg-editor/js/plugins/video.min.js',
       'client/bower_components/angular-froala/src/angular-froala.js',
       'client/bower_components/material-calendar/dist/angular-material-calendar.js',
+      'client/bower_components/moment/moment.js',
+      'client/bower_components/fullcalendar/dist/fullcalendar.js',
+      'client/bower_components/angular-ui-calendar/src/calendar.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

@@ -1,0 +1,39 @@
+<md-toolbar class="md-theme-light md-warn">
+    <h2 class="md-toolbar-tools">
+        <span>Календарь событий</span>
+    </h2>
+</md-toolbar>
+<md-content>
+
+
+    <div class="btn-group calTools">
+        <md-button  ng-click="vm.addEvent();" class="md-raised md-primary md-button">Add Event</md-button>
+    </div>
+
+    <h4>{{ vm.alertMessage }}</h4>
+    <ul class="unstyled">
+        <li ng-repeat="e in vm.events">
+            <div class="alert alert-info">
+                <a class="close" ng-click="remove($index)"><i class="icon-remove"></i></a>
+                <b> <input ng-model="e.title"></b>
+                {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
+            </div>
+        </li>
+    </ul>
+
+    <div ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources"></div>
+
+    <md-list>
+
+        <md-list-item class="md-3-line" ng-repeat="event in vm.events">
+            <div class="md-list-item-text">
+                <h3>{{ event.title }}</h3>
+                <h4>{{ event.date}}</h4>
+                <p>description</p>
+            </div>
+            <md-button class="md-secondary">Respond</md-button>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+
+    </md-list>
+</md-content>

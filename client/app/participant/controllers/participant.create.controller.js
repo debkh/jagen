@@ -16,7 +16,6 @@ class participantCreateController {
     createParticipant(form) {
         if (form.$valid) {
             this.participant._vessel = this.vessel._id;
-            console.log(this.participant)
             this.Participant.save(this.participant).$promise.then(()=> {
                 this.$mdDialog.hide();
         });
@@ -24,14 +23,11 @@ class participantCreateController {
     }
 
 
-    hide() {
-        this.$mdDialog.hide();
-    };
+    /**
+     * Cancel dialog window
+     */
     cancel() {
         this.$mdDialog.cancel();
-    };
-    answer(answer) {
-        this.$mdDialog.hide(answer);
     };
 }
 

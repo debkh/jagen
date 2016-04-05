@@ -1,11 +1,11 @@
 <md-toolbar class="md-warn">
     <div class="md-toolbar-tools">
-        <h2 class="md-flex">Редактирование судна - "{{ vc.vessel.title }}"</h2>
+        <h2 class="md-flex">Редактирование судна - "{{ vm.vessel.title }}"</h2>
     </div>
 </md-toolbar>
 
 <md-content flex="" layout-padding="">
-    <form name="vesselForm" ng-submit="vc.updateVessels(vesselForm)" novalidate>
+    <form name="vesselForm" ng-submit="vm.updateVessels(vesselForm)" novalidate>
         <div ng-include="'/app/vessel/views/_form.html'"></div>
         <md-button class="md-raised md-primary" type="submit">Update</md-button>
     </form>

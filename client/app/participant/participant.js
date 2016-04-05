@@ -10,7 +10,7 @@ angular.module('jagenApp')
               'content': {
                   templateUrl: 'app/participant/views/create.html',
                   controller: 'ParticipantController',
-                  controllerAs: 'pc',
+                  controllerAs: 'vm',
               }
           },
           authenticate: true

@@ -1,0 +1,37 @@
+<md-dialog aria-label="События"  ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>События</h2>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <!--<create-document form-data="formData"></create-document>-->
+            <div layout="column" class="inputdemoErrorsAdvanced" ng-cloak>
+                <md-content layout-padding>
+                    <form name="vm.eventForm" ng-submit="vm.save(vm.eventForm)" novalidate>
+
+                        <md-input-container class="md-block">
+                            <label>Title</label>
+                            <input ng-required="true" name="title" ng-model="vm.event.title">
+                            <div ng-messages="vm.eventForm.title.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Дата</label>
+                            <input ng-required="true" type="date" name="date" ng-model="vm.event.date">
+                            <div ng-messages="vm.eventForm.date.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-button ng-click="vm.close()" class="md-raised md-primary">Cancel</md-button>
+                        <md-button type="submit" class="md-raised md-primary">Save</md-button>
+                    </form>
+                </md-content>
+            </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

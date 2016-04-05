@@ -14,16 +14,10 @@ class vesselCreateController {
         this.$state = $state;
         this.$http = $http;
         this.$location = $location;
-        this.currentUser = Auth.getCurrentUser();
-    }
-
-    $onInit(){
-
     }
 
     createVessels(form) {
         if (form.$valid) {
-            console.log(this.vessel);
             this.Vessel.save(this.vessel).$promise.then(()=> {
                 this.$state.go('vessels');
             });

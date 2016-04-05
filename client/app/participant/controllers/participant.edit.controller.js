@@ -25,7 +25,6 @@ class participantEditController {
      * @param form
      */
     updateParticipant(form) {
-        console.log(form);
         if (form.$valid) {
             this.Participant.update({id : this.participant._id}, this.participant).$promise.then(()=> {
                 this.$mdDialog.hide();
@@ -33,14 +32,11 @@ class participantEditController {
         }
     }
 
-    hide() {
-        this.$mdDialog.hide();
-    };
+    /**
+     * Cancel dialog window
+     */
     cancel() {
         this.$mdDialog.cancel();
-    };
-    answer(answer) {
-        this.$mdDialog.hide(answer);
     };
 }
 
