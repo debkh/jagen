@@ -59,6 +59,9 @@ class eventListController {
 
     /* alert on eventClick */
     alertOnEventClick( date, jsEvent, view, ModalService){
+        //====================================
+        /* here is problem, this is empty */
+        //====================================
         this.ModalService.show({
             templateUrl: '/app/event/views/view.html',
             locals: {event: date},
@@ -93,6 +96,9 @@ class eventListController {
     eventRender( event, element, view ) {
         element.attr({'tooltip': event.title,
             'tooltip-append-to-body': true});
+        //====================================
+        /* here is problem, this is empty */
+        //====================================
         this.$compile(element)(this);
     };
 
