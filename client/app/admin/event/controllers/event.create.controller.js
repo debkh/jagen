@@ -3,7 +3,7 @@
 (function() {
 
   class eventCreateController {
-      constructor($state, $mdDialog, Event, lodash, Modal, EventService) {
+      constructor($state, $mdDialog, Event, lodash, ModalService, EventService) {
           this.$state = $state;
           this.lodash = lodash;
           this.EventService = EventService;
@@ -14,7 +14,6 @@
 
       save(form){
           if (form.$valid) {
-              console.log(this.event);
               this.EventService.save(this.event).then((response)=> {
                   this.$mdDialog.hide(response);
           });

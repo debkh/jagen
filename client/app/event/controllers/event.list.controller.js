@@ -70,6 +70,8 @@ class eventListController {
         this.alertMessage = 'clicked';
         console.log(date);
         console.log(jsEvent);
+        console.log(view);
+        console.log(ModalService);
     };
     /* alert on Drop */
     alertOnDrop(event, delta, revertFunc, jsEvent, ui, view){
@@ -99,7 +101,7 @@ class eventListController {
         //====================================
         /* here is problem, this is empty */
         //====================================
-        this.$compile(element)(this);
+        //this.$compile(element)(this);
     };
 
 }

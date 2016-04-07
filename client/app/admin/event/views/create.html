@@ -20,12 +20,19 @@
                         </md-input-container>
 
                         <md-input-container class="md-block">
-                            <label>Дата</label>
-                            <input ng-required="true" type="date" name="date" ng-model="vm.event.date">
-                            <div ng-messages="vm.eventForm.date.$error">
-                                <div ng-message="required">This is required.</div>
+                            <label>Начало</label>
+                            <md-datepicker name="start" ng-model="vm.event.start" md-placeholder="Enter date"
+                                           required md-min-date="minDate" md-max-date="maxDate"
+                                           md-date-filter="onlyWeekendsPredicate"></md-datepicker>
+                            <div ng-messages="vm.eventForm.start.$error">
+                                <div ng-message="valid">The entered value is not a date!</div>
+                                <div ng-message="required">This date is required!</div>
+                                <div ng-message="mindate">Date is too early!</div>
+                                <div ng-message="maxdate">Date is too late!</div>
+                                <div ng-message="filtered">Only weekends are allowed!</div>
                             </div>
                         </md-input-container>
+
 
                         <md-button ng-click="vm.close()" class="md-raised md-primary">Cancel</md-button>
                         <md-button type="submit" class="md-raised md-primary">Save</md-button>
