@@ -15,7 +15,7 @@
                 bindToController: true,
             }, data);
             return this.$mdDialog.show(params)
-                .catch(console.log.bind(console));
+            .catch(console.log.bind(console));
         }
 
         confirm(data) {

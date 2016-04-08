@@ -34,24 +34,29 @@
               });
       }
 
-      modalCreateEvent() {
+      modalCreateEvent(data) {
           this.ModalService.show({
               templateUrl: '/app/admin/event/views/create.html',
-              locals: '',
+              locals: {prefillingData: data},
               controller: 'eventCreateController',
-          }).catch(console.log.bind(console));
+          })
+          .then((res) => {
+              if(data){
+                  angular.extend(data, res);
+              }else{
+                  this.events.push(res);
+              }
+              return res;
+          })
+          .catch(console.log.bind(console));
       }
 
-      remove(event) {
-          var confirm = this.ModalService.confirm({
-              title: 'Are you sure to delete the record?',
-            });
-
-          return this.$mdDialog.show(confirm).then(() => {
-              event.$remove({id: event._id});
-              this.events.splice(this.event.indexOf(event), 1);
+      remove(data) {
+          return this.EventService.remove(data)
+          .then((response) => {
+              this.lodash.remove(this.events, {_id: data._id});
+              return response;
           });
-
       }
   }
 
