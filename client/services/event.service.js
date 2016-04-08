@@ -30,12 +30,11 @@
       let action = data._id ? 'update' : 'save';
 
       var saveData = {
-        actionId:data._id,
-        file:data.file,
         title:data.title,
-        text:data.text,
-        slug:data.slug,
-      }
+        start:data.start,
+        end:data.end,
+        description:data.description,
+      };
 
       return this.Event[action](saveData).$promise.then((response) => {
         if(action == 'save') {
