@@ -34,14 +34,18 @@
               });
       }
 
-      modalCreateEvent() {
+      modalCreateEvent(data) {
           this.ModalService.show({
               templateUrl: '/app/admin/event/views/create.html',
-              locals: '',
+              locals: {prefillingData: data},
               controller: 'eventCreateController',
           })
           .then((res) => {
-              this.events.push(res);
+              if(data){
+                  angular.extend(data, res);
+              }else{
+                  this.events.push(res);
+              }
               return res;
           })
           .catch(console.log.bind(console));

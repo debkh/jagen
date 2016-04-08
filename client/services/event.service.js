@@ -30,17 +30,15 @@
       let action = data._id ? 'update' : 'save';
 
       var saveData = {
+        id:data._id,
         title:data.title,
         start:data.start,
         end:data.end,
         description:data.description,
       };
 
-      return this.Event[action](saveData).$promise.then((response) => {
-        if(action == 'save') {
-          this.events.push(response);
-        }
-        console.log(this.events);
+      return this.Event[action](saveData).$promise
+      .then((response) => {
         return response;
       });
     }
@@ -58,7 +56,6 @@
       return this.$mdDialog.show(confirm).then((res) => {
         return this.Event.remove({id: data._id}).$promise
         .then((response) => {
-          debugger;
           return response;
         });
       });
