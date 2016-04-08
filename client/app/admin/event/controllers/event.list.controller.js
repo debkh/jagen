@@ -39,7 +39,12 @@
               templateUrl: '/app/admin/event/views/create.html',
               locals: '',
               controller: 'eventCreateController',
-          }).catch(console.log.bind(console));
+          })
+          .then((res) => {
+              this.events.push(res);
+              return res;
+          })
+          .catch(console.log.bind(console));
       }
 
       remove(event) {
