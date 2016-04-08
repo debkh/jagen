@@ -47,16 +47,12 @@
           .catch(console.log.bind(console));
       }
 
-      remove(event) {
-          var confirm = this.ModalService.confirm({
-              title: 'Are you sure to delete the record?',
-            });
-
-          return this.$mdDialog.show(confirm).then(() => {
-              event.$remove({id: event._id});
-              this.events.splice(this.event.indexOf(event), 1);
+      remove(data) {
+          return this.EventService.remove(data)
+          .then((response) => {
+              this.lodash.remove(this.events, {_id: data._id});
+              return response;
           });
-
       }
   }
 

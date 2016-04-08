@@ -51,33 +51,16 @@
       }
 
       let confirm = this.$mdDialog.confirm()
-      .title('Would you like to delete your documens?')
+      .title('Are you sure to delete the record?')
       .ok('YES')
       .cancel('NO');
 
-      return this.$mdDialog.show(confirm).then(() => {
-        let prom = [];
-
-        if (angular.isArray(data)) {
-          angular.forEach(data, (el)=> {
-            prom.push(this.removeOneElement(el));
-          });
-        } else {
-          prom.push(this.removeOneElement(data));
-        }
-
-        return this.$q.all(prom).then(function (response) {
+      return this.$mdDialog.show(confirm).then((res) => {
+        return this.Event.remove({id: data._id}).$promise
+        .then((response) => {
+          debugger;
           return response;
-        })
-      });
-    }
-
-    removeOneElement(data) {
-      angular.extend(data, {actionId: data._id});
-
-      return this.DocumentModel.remove(data).$promise.then((response) => {
-        this.lodash.remove(this.collection, {_id: data._id});
-        return response;
+        });
       });
     }
   }
