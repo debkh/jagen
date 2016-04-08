@@ -3,20 +3,20 @@
 (function () {
 
     class ModalService{
+
         constructor($mdDialog) {
             this.$mdDialog = $mdDialog;
         }
 
         show(data) {
-            return this.$mdDialog.show({
-                templateUrl: data.templateUrl,
+            let params = angular.extend({
                 clickOutsideToClose: true,
                 controllerAs: 'vm',
                 bindToController: true,
-                locals: data.locals,
-                controller: data.controller
-            });
-            // .catch(console.log.bind(console))
+            }, data);
+            console.log(data);
+            return this.$mdDialog.show(params)
+                .catch(console.log.bind(console));
         }
 
         confirm(data) {
@@ -28,6 +28,12 @@
                 .ok('Yes')
                 .cancel('No');
         }
+        /**
+         * Cancel dialog window
+         */
+        cancel() {
+            this.$mdDialog.cancel();
+        };
     }
 
     angular.module('jagenApp')

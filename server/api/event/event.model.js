@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 
 var EventSchema = new mongoose.Schema({
   title: String,
+  description: String,
   start: {
       type: Date,
       default: Date.now

@@ -10,11 +10,11 @@
     </md-toolbar>
     <md-dialog-content>
         <div class="md-dialog-content">
-            {{ vm.event }}
+            {{ vm.event.description }}
         </div>
     </md-dialog-content>
     <md-dialog-actions layout="row">
-        <md-button  ng-click="vm.close(vm.vessel);" class="md-raised md-button">Close</md-button>
+        <md-button  ng-click="vm.cancel();" class="md-raised md-button">Close</md-button>
         </md-button>
     </md-dialog-actions>
 </md-dialog>

@@ -18,14 +18,14 @@ class eventListController {
     uiConfig = {
         calendar:{
             height: 450,
-            editable: true,
+            editable: false,
             timezone: "local",
             header:{
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
-            eventClick: this.alertOnEventClick,
+            eventClick: this.alertOnEventClick.bind(this),
         }
     };
 
@@ -41,11 +41,9 @@ class eventListController {
     }
 
     list(){
-        console.log(this);
         return this.EventService.query()
             .then((response) => {
                 this.events = response;
-                console.log(this.events);
                 this.eventSources = [response];
             });
     }
@@ -60,11 +58,6 @@ class eventListController {
             locals: {event: date},
             controller: 'eventListController',
         }).catch(console.log.bind(console));
-        this.alertMessage = 'clicked';
-        console.log(date);
-        console.log(jsEvent);
-        console.log(view);
-        console.log(ModalService);
     };
 
     addEvent() {
