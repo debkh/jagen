@@ -10,13 +10,21 @@
           this.ModalService = ModalService;
           this.$mdDialog = $mdDialog;
           this.Event = Event;
+
+          this.myDate = new Date();
+          this.minDate = new Date(
+              this.myDate.getFullYear(),
+              this.myDate.getMonth(),
+              this.myDate.getDate()
+          );
       }
 
       save(form){
           if (form.$valid) {
+              console.log(this.event);
               this.EventService.save(this.event).then((response)=> {
                   this.$mdDialog.hide(response);
-          });
+              });
           }
       }
 

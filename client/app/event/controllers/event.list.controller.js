@@ -9,10 +9,11 @@ class eventListController {
     m = this.date.getMonth();
     y = this.date.getFullYear();
 
-    events = [
-        {title: 'All Day Event',start: new Date(this.y, this.m, 1)},
-        {title: 'Long Event',start: new Date(this.y,this.m, this.d - 5),end: new Date(this.y,this.m, this.d - 2)},
+    events2 = [
+        {title: 'All Day Event',start: 'Fri Apr 01 2016 00:00:00 GMT+0300 (EEST) '},
+        {title: 'Long Event',start: 'Fri Apr 01 2016 00:00:00 GMT+0300 (EEST) ',end: 'Fri Apr 03 2016 00:00:00 GMT+0300 (EEST) '},
     ];
+    events = [];
 
     uiConfig = {
         calendar:{
@@ -25,20 +26,12 @@ class eventListController {
                 right: 'month,agendaWeek,agendaDay'
             },
             eventClick: this.alertOnEventClick,
-            eventDrop: this.alertOnDrop,
-            eventResize: this.alertOnResize,
-            eventRender: this.eventRender
         }
     };
 
-    eventSources = [this.events];
-    alertMessage = 'alertMessage';
-
-
-    constructor($http, $state, $location,$compile, EventService, $scope, uiCalendarConfig, ModalService) {
+    constructor($http, $state, $location,$compile, EventService, uiCalendarConfig, ModalService) {
         this.EventService = EventService;
         this.$state = $state;
-        this.$scope = $scope;
         this.$compile = $compile;
         this.$http = $http;
         this.$location = $location;
@@ -48,13 +41,13 @@ class eventListController {
     }
 
     list(){
+        console.log(this);
         return this.EventService.query()
             .then((response) => {
-            //this.events = response;
-
-        console.log(this.events);
-        return this.events;
-        });
+                this.events = response;
+                console.log(this.events);
+                this.eventSources = [response];
+            });
     }
 
     /* alert on eventClick */
@@ -73,15 +66,6 @@ class eventListController {
         console.log(view);
         console.log(ModalService);
     };
-    /* alert on Drop */
-    alertOnDrop(event, delta, revertFunc, jsEvent, ui, view){
-        this.alertMessage = ('Event Dropped to make dayDelta ' + delta);
-    };
-    /* alert on Resize */
-    alertOnResize(event, delta, revertFunc, jsEvent, ui, view ){
-        this.alertMessage = ('Event Resized to make dayDelta ' + delta);
-    };
-
 
     addEvent() {
         this.events.push({
@@ -92,16 +76,6 @@ class eventListController {
         });
         console.log(this.events);
 
-    };
-
-    /* Render Tooltip */
-    eventRender( event, element, view ) {
-        element.attr({'tooltip': event.title,
-            'tooltip-append-to-body': true});
-        //====================================
-        /* here is problem, this is empty */
-        //====================================
-        //this.$compile(element)(this);
     };
 
 }

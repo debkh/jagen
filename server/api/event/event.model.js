@@ -4,8 +4,13 @@ import mongoose from 'mongoose';
 
 var EventSchema = new mongoose.Schema({
   title: String,
-  start: String,
-  end: String,
+  start: {
+      type: Date,
+      default: Date.now
+  },
+  end: {
+      type: Date,
+      default: Date.now },
   _user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User'

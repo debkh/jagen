@@ -9,33 +9,44 @@
             <!--<create-document form-data="formData"></create-document>-->
             <div layout="column" class="inputdemoErrorsAdvanced" ng-cloak>
                 <md-content layout-padding>
-                    <form name="vm.eventForm" ng-submit="vm.save(vm.eventForm)" novalidate>
+                    <form name="eventForm" ng-submit="vm.save(eventForm)" novalidate>
 
                         <md-input-container class="md-block">
-                            <label>Title</label>
+                            <label>Название</label>
                             <input ng-required="true" name="title" ng-model="vm.event.title">
-                            <div ng-messages="vm.eventForm.title.$error">
+                            <div ng-messages="eventForm.title.$error">
                                 <div ng-message="required">This is required.</div>
                             </div>
                         </md-input-container>
 
                         <md-input-container class="md-block">
                             <label>Начало</label>
-                            <md-datepicker name="start" ng-model="vm.event.start" md-placeholder="Enter date"
-                                           required md-min-date="minDate" md-max-date="maxDate"
-                                           md-date-filter="onlyWeekendsPredicate"></md-datepicker>
-                            <div ng-messages="vm.eventForm.start.$error">
-                                <div ng-message="valid">The entered value is not a date!</div>
-                                <div ng-message="required">This date is required!</div>
-                                <div ng-message="mindate">Date is too early!</div>
-                                <div ng-message="maxdate">Date is too late!</div>
-                                <div ng-message="filtered">Only weekends are allowed!</div>
-                            </div>
                         </md-input-container>
+                        <md-datepicker name="start" ng-model="vm.event.start" md-placeholder="Enter date"
+                                       required md-min-date="vm.minDate">
+                        </md-datepicker>
+                        <div class="datepicker-validation-messages" ng-messages="eventForm.start.$error"
+                             ng-if="eventForm.$submitted || eventForm.start.$touched">
+                            <div ng-message="valid">The entered value is not a date!</div>
+                            <div ng-message="required">This date is required!</div>
+                            <div ng-message="mindate">Date is too early!</div>
+                        </div>
 
+                        <md-input-container class="md-block">
+                            <label>Конец</label>
+                        </md-input-container>
+                        <md-datepicker name="end" ng-model="vm.event.end" md-placeholder="Enter date"
+                                       required md-min-date="vm.minDate">
+                        </md-datepicker>
+                        <div class="datepicker-validation-messages" ng-messages="eventForm.end.$error"
+                             ng-if="eventForm.$submitted || eventForm.end.$touched">
+                            <div ng-message="required">This date is required!</div>
+                        </div>
 
-                        <md-button ng-click="vm.close()" class="md-raised md-primary">Cancel</md-button>
-                        <md-button type="submit" class="md-raised md-primary">Save</md-button>
+                        <md-input-container class="md-block">
+                            <md-button ng-click="vm.close()" class="md-raised md-primary">Cancel</md-button>
+                            <md-button type="submit" class="md-raised md-primary">Save</md-button>
+                        </md-input-container>
                     </form>
                 </md-content>
             </div>
