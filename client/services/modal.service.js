@@ -14,7 +14,6 @@
                 controllerAs: 'vm',
                 bindToController: true,
             }, data);
-            console.log(data);
             return this.$mdDialog.show(params)
                 .catch(console.log.bind(console));
         }

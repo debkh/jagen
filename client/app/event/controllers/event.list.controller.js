@@ -19,7 +19,6 @@ class eventListController {
         calendar:{
             height: 450,
             editable: false,
-            timezone: "local",
             header:{
                 left: 'prev,next today',
                 center: 'title',
@@ -29,10 +28,10 @@ class eventListController {
         }
     };
 
-    constructor($http, $state, $location,$compile, EventService, uiCalendarConfig, ModalService) {
+    constructor($http, $state, $location,$mdDialog, EventService, uiCalendarConfig, ModalService) {
         this.EventService = EventService;
         this.$state = $state;
-        this.$compile = $compile;
+        this.$mdDialog = $mdDialog;
         this.$http = $http;
         this.$location = $location;
         this.uiCalendarConfig = uiCalendarConfig;
@@ -70,6 +69,13 @@ class eventListController {
         console.log(this.events);
 
     };
+
+    /**
+     * close dialog(popup) window
+     */
+    cancel(){
+        this.$mdDialog.cancel();
+    }
 
 }
 
