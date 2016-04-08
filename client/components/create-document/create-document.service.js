@@ -21,18 +21,35 @@
   }
 
   class ModalController{
-    constructor($mdDialog, DocumentService, lodash, TextEditorService) {
+    vm = this;
+    constructor($scope, $mdDialog, DocumentService, lodash, TextEditorService, MenuService) {
+      // this.menuCollection = MenuService.collection;
+      this.$scope = $scope;
+      this.MenuService = MenuService;
       this.lodash = lodash;
       this.DocumentService = DocumentService;
       this.$mdDialog = $mdDialog;
-      this.froalaOptions = TextEditorService.options
+      this.froalaOptions = TextEditorService.options;
       this.formData = {};
 
       this.onInit();
     }
 
+    // get prefillingData() {
+    //   return this.prefillingData;
+    // }
+    // set prefillingData(val) {
+    //   this.formData = val;
+    //   this.formData.menu = this.lodash.map(this.formData.menu, '_id');
+    //   console.log(this.lodash);
+    // }
+
     onInit(){
-      this.formData = this.prefillingData;
+      this.$scope.$watch('this.prefillingData', () => {
+        angular.copy(this.prefillingData, this.formData);
+        this.formData.menu = this.lodash.map(this.formData.menu, '_id');
+        console.log(this.formData.menu);
+      });
     }
 
     save(){
@@ -45,7 +62,7 @@
       this.DocumentService.save(this.formData)
       .then((response) => {
         // set response data to document
-        angular.extend(this.prefillingData, response);
+        this.lodash.merge(this.prefillingData, response);
         // hide modal
         this.$mdDialog.hide(response);
       });

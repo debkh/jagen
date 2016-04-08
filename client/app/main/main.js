@@ -9,6 +9,11 @@ angular.module('jagenApp')
       <navbar></navbar>
       <main></main>
       <footer></footer>
-    `
+    `,
+    // resolve:{
+    //   menuCollection: function (MenuService) {
+    //     return MenuService.getCollection();
+    //   }
+    // }
   })
 });

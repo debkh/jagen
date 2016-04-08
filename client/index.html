@@ -13,10 +13,6 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
 
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">-->
-    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,300">-->
-
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
       <link rel="stylesheet" href="bower_components/angular-material-data-table/dist/md-data-table.css" />
@@ -54,6 +50,7 @@
     <![endif]-->
 
     <div ui-view="" class="main-view"></div>
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -133,21 +130,23 @@
       <script src="bower_components/moment/moment.js"></script>
       <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
       <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-      <script src="components/auth/auth.module.js"></script>
       <script src="app/admin/admin.module.js"></script>
       <script src="app/document/document.module.js"></script>
+      <script src="components/auth/auth.module.js"></script>
       <script src="components/util/util.module.js"></script>
-      <script src="app/admin/admin.controller.js"></script>
+      <script src="components/auth/router.decorator.js"></script>
       <script src="app/account/account.js"></script>
       <script src="app/admin/admin.router.js"></script>
       <script src="app/admin/document/document.controller.js"></script>
       <script src="app/admin/event/controllers/event.create.controller.js"></script>
       <script src="app/admin/event/controllers/event.list.controller.js"></script>
+      <script src="app/admin/menu/menu.controller.js"></script>
       <script src="app/admin/user/user.controller.js"></script>
       <script src="app/app.constant.js"></script>
       <script src="app/document/document.controller.js"></script>
@@ -166,11 +165,16 @@
       <script src="app/vessel/controllers/vessel.list.controller.js"></script>
       <script src="app/vessel/controllers/vessel.view.controller.js"></script>
       <script src="app/vessel/vessel.js"></script>
-      <script src="app/account/login/login.controller.js"></script>
+      <script src="app/account/signup/signup.controller.js"></script>
       <script src="components/auth/auth.service.js"></script>
       <script src="components/auth/interceptor.service.js"></script>
-      <script src="components/auth/router.decorator.js"></script>
+      <script src="app/account/login/login.controller.js"></script>
+      <script src="components/bootstrap-menu/bootstrap-menu-item.directive.js"></script>
+      <script src="components/bootstrap-menu/bootstrap-menu.directive.js"></script>
       <script src="components/create-document/create-document.service.js"></script>
+      <script src="components/create-menu/create-menu.service.js"></script>
+      <script src="components/create-menu/directives/documentsList.directive.js"></script>
+      <script src="components/create-menu/directives/menuList.directive.js"></script>
       <script src="components/footer/footer.directive.js"></script>
       <script src="components/menu/menu.directive.js"></script>
       <script src="components/mongoose-error/mongoose-error.directive.js"></script>
@@ -183,15 +187,17 @@
       <script src="components/text-editor/text-editor.config.js"></script>
       <script src="components/text-editor/text-editor.service.js"></script>
       <script src="components/upload-file/aps-upload-file.directive.js"></script>
-      <script src="app/account/signup/signup.controller.js"></script>
+      <script src="app/admin/admin.controller.js"></script>
       <script src="components/util/util.service.js"></script>
       <script src="models/document.model.js"></script>
       <script src="models/event.model.js"></script>
+      <script src="models/menu.model.js"></script>
       <script src="models/participant.model.js"></script>
       <script src="models/user.model.js"></script>
       <script src="models/vessel.model.js"></script>
       <script src="services/document.service.js"></script>
       <script src="services/event.service.js"></script>
+      <script src="services/menu.service.js"></script>
       <script src="services/modal.service.js"></script>
       <script src="services/request.service.js"></script>
       <!-- endinjector -->

@@ -1,0 +1,52 @@
+<md-content laout="column" flex>
+  <md-card>
+
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <span>Menu</span>
+        <div flex></div>
+        <md-button class="md-raised" ng-click="vm.modalCreateMenu()">Create</md-button>
+        <md-button class="md-raised md-warn" ng-click="vm.remove(vm.selected)">Delete</md-button>
+      </div>
+    </md-toolbar>
+
+    <md-table-container>
+      <table md-table md-row-select ng-model="vm.selected" md-progress="promise">
+        <thead md-head>
+          <tr md-row>
+            <th md-column class="index-column"><span>Index</span></th>
+            <th md-column><span>Title</span></th>
+            <th md-column><span>Type</span></th>
+            <th md-column></th>
+          </tr>
+        </thead>
+        <tbody md-body>
+          <tr md-row
+              md-select="item"
+              md-select-id="{{item._id}}"
+              ng-repeat="item in vm.menuList">
+            <!--<td md-cell>{{$index + 1}}</td>-->
+            <td md-cell>{{item.index}}</td>
+            <td md-cell>
+              <div layout="row" layout-align="center center">
+                <div flex="5" ng-repeat="deep in vm.lodash.range(item.deep)" class="menu-deep"></div>
+                <div flex>{{item.title}}</div>
+              </div>
+            </td>
+            <td md-cell>{{item.type}}</td>
+            <!--<td md-cell ng-bind-html="item.text"></td>-->
+            <td md-cell>{{item.user.email}}</td>
+            <td md-cell class="control-buttons">
+              <md-button ng-click="vm.modalCreateMenu(item)" aria-label="edit">
+                <md-icon md-font-icon="fa fa-pencil"></md-icon>
+              </md-button>
+              <md-button ng-click="vm.remove(item)" aria-label="remove">
+                <md-icon md-font-icon="fa fa-trash-o"></md-icon>
+              </md-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </md-card>
+</md-content>

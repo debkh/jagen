@@ -1,19 +1,16 @@
 /**
  * Using Rails-like standard naming convention for endpoints.
- * GET     /api/documents              ->  index
- * POST    /api/documents              ->  create
- * GET     /api/documents/:id          ->  show
- * PUT     /api/documents/:id          ->  update
- * DELETE  /api/documents/:id          ->  destroy
+ * GET     /api/menu              ->  index
+ * POST    /api/menu              ->  create
+ * GET     /api/menu/:id          ->  show
+ * PUT     /api/menu/:id          ->  update
+ * DELETE  /api/menu/:id          ->  destroy
  */
 
 'use strict';
 
 import _ from 'lodash';
-import * as fs from 'fs';
-import * as url from 'url';
-import Document from './document.model';
-import mongoose from 'mongoose';
+import Menu from './menu.model';
 
 function populated(obj, relations) {
   return function(response) {
@@ -34,9 +31,8 @@ function respondWithResult(res, statusCode) {
 
 function saveUpdates(updates) {
   return function(entity) {
-    _.assign(entity, updates);
-    // _.merge(entity, updates);
-    return entity.save()
+    var updated = _.assign(entity, updates);
+    return updated.save()
     .then(updated => {
       return updated;
     });
@@ -73,70 +69,61 @@ function handleError(res, statusCode) {
 
 // Gets a list of Things
 export function index(req, res) {
-  return Document.find()
-  .populate('user')
+  return Menu.find()
+  .populate('document')
   .populate('menu')
+  .populate({
+    path: 'subItems',
+    model: 'Menu',
+    populate: [
+      {
+        path: 'document',
+        model: 'Document'
+      },{
+        path: 'menu',
+        model: 'Menu'
+      }
+    ]
+  })
   .exec()
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  .then(respondWithResult(res))
+  .catch(handleError(res));
 }
 
-// Gets a single Document from the DB
+// Gets a single Menu from the DB
 export function show(req, res) {
-  return Document.findOne({slug: req.params.slug}).exec()
+  return Menu.findOne({slug: req.params.slug}).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Creates a new Document in the DB
+// Creates a new Menu in the DB
 export function create(req, res) {
-  _.assignIn(req.body, {user: req.user._id});
-  req.body.menu = req.body.menu? req.body.menu.split(',') : [];
-
-  return Document.create(req.body)
-  .then(populated(Document, ['user', 'menu']))
+  delete req.body._id;
+  return Menu.create(req.body)
+  .then(populated(Menu, ['document', 'menu']))
   .then(respondWithResult(res, 201))
   .catch(handleError(res));
 }
 
-export function uploadPhoto(req, res, next) {
-  if(!req.files.file){
-    next();
-    return;
-  }
-
-  var tmp_path = req.files.file.path;
-  var target_path = `client/assets/uploads/documents/${req.files.file.name}`;
-
-  fs.rename(tmp_path, target_path, function(err) {
-    if (err) throw err;
-    fs.unlink(tmp_path, function() {
-      if (err) throw err;
-      req.body.fileName = req.files.file.name;
-      next();
-    });
-  });
-}
-
-// Updates an existing Document in the DB
+// Updates an existing Menu in the DB
 export function update(req, res) {
-  req.body.menu = req.body.menu? req.body.menu.split(',') : [];
   if (req.body._id) {
     delete req.body._id;
   }
-  return Document.findById(req.params.id)
+  return Menu.findById(req.params.id)
     .exec()
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
-    .then(populated(Document, ['user', 'menu']))
+    .then(populated(Menu, ['document', 'menu']))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Deletes a Document from the DB
+// Deletes a Menu from the DB
 export function destroy(req, res) {
-  return Document.findById(req.params.id).exec()
+  return Menu.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

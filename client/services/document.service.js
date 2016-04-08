@@ -22,10 +22,14 @@
     }
 
     getCollection() {
-      return this.DocumentModel.query().$promise.then((response) => {
-        angular.copy(response, this.collection);
-        return this.collection;
-      });
+      if(this.collection.length){
+        return this.$q.when(this.collection);
+      }else{
+        return this.DocumentModel.query().$promise.then((response) => {
+          angular.copy(response, this.collection);
+          return this.collection;
+        });
+      }
     }
 
     save(data) {
@@ -45,7 +49,8 @@
         title:data.title,
         text:data.text,
         slug:data.slug,
-      }
+        menu:data.menu,
+      };
 
       return this.DocumentModel[action](saveData).$promise.then((response) => {
         if(action == 'save'){

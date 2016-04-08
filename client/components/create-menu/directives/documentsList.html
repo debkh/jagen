@@ -1,0 +1,15 @@
+<ng-form name="vm.formSave">
+  <div layout="row">
+    <md-input-container flex="100">
+      <label>Document</label>
+      <md-select name="item" ng-model="vm.document" required>
+        <md-option ng-value="item" ng-repeat="item in vm.documents">{{item.title}}</md-option>
+      </md-select>
+      <div class="errors"
+           ng-messages="vm.formSave.item.$error"
+           ng-if="vm.formSave.item.$touched || vm.form.$submitted">
+        <div ng-message="required">Required</div>
+      </div>
+    </md-input-container>
+  </div>
+</ng-form>
