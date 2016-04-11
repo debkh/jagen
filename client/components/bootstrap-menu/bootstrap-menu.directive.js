@@ -14,7 +14,6 @@
     }
 
     getMenu(){
-      console.log(this.slug);
       return this.MenuService.getMenu(this.slug)
       .then((res)=>{
         this.menu = res;

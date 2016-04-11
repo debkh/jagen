@@ -63,14 +63,16 @@
       return this.getCollection()
       .then((res)=> {
         let menu = this.menuWithSubItems(res, slug);
-
-        console.log(menu);
         return menu;
       });
     }
 
     menuWithSubItems(res, slug) {
       let menu = this.lodash.find(res, {slug: slug});
+      if(!menu){
+        return;
+      }
+
       menu.subItems = this.lodash.map(menu.subItems, (item) => {
         if (item.subItems) {
           item = this.menuWithSubItems(res, item.slug);
@@ -112,9 +114,7 @@
       return this.MenuModel[action](data).$promise
       .then((response) => {
         if (action == 'save') {
-          console.log(this.collection);
           this.collection.push(response);
-          console.log(this.collection);
         }
 
         return response;

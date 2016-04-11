@@ -34,7 +34,6 @@
       return this.MenuService.getMenuList()
       .then((res)=>{
         angular.copy(res, this.menuList);
-        console.log(this.menuList);
         return this.menuList;
       });
     }
