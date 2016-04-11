@@ -1,11 +1,38 @@
-<md-toolbar>
-    <h3>
-        <md-button ng-repeat="item in nav.menu"  ui-sref-active="active" ui-sref="{{item.state}}">{{item.title}}</md-button>
-        <div style="float: right;">
-            <md-button ui-sref="signup" ng-if="!nav.isLoggedIn()">Sign up</md-button>
-            <md-button ui-sref="login" ng-if="!nav.isLoggedIn()">Login</md-button>
-            <md-button ui-sref="logout" ng-if="nav.isLoggedIn()">Logout</md-button>
-            <md-button ui-sref="settings" ng-if="nav.isLoggedIn()">Settings</md-button>
+<md-toolbar class="header">
+  <!--<md-button ng-repeat="item in nav.menu" ui-sref-active="active" ui-sref="{{item.state}}">{{item.title}}</md-button>-->
+  <div layout="row" class="md-padding">
+    <div flex="70">
+      <div navbar-menu>
+
+        <button class="md-button" ui-sref-active="active" ui-sref="main">Home</button>
+
+        <bootstrap-menu slug="menu-1"></bootstrap-menu>
+
+        <div class="btn-group" ng-if="nav.isLoggedIn()">
+          <button type="button" class="md-button" data-toggle="dropdown">Мероприятия<span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" ui-sref="events">Все мероприятия</a></li>
+          </ul>
         </div>
-    </h3>
+
+        <div class="btn-group" ng-if="nav.isLoggedIn()">
+          <button type="button" class="md-button" data-toggle="dropdown">Судна<span class="caret"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#" ui-sref="vessels">Мои судна</a></li>
+            <li><a href="#" ui-sref="vessel_create">Добавить судно</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+    <div flex="30">
+      <div style="float: right;">
+        <md-button ui-sref="signup" ng-if="!nav.isLoggedIn()">Sign up</md-button>
+        <md-button ui-sref="login" ng-if="!nav.isLoggedIn()">Login</md-button>
+        <md-button ui-sref="logout" ng-if="nav.isLoggedIn()">Logout</md-button>
+        <md-button ui-sref="settings" ng-if="nav.isLoggedIn()">Settings</md-button>
+      </div>
+    </div>
+  </div>
 </md-toolbar>

@@ -31,6 +31,7 @@
       templateUrl: "/components/bootstrap-menu/bootstrap-menu.html",
       controller: DirectiveCtrl,
       controllerAs: 'vm',
+      replace: true,
       bindToController: true,
       // link: link,
     };
