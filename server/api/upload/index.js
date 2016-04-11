@@ -8,5 +8,5 @@ import * as auth from '../../auth/auth.service';
 var multipartyMiddleware = multiparty();
 var router = express.Router();
 
-router.post('/image', multipartyMiddleware, auth.isAuthenticated(), controller.uploadImage);
+router.post('/image', multipartyMiddleware, auth.hasRole('admin'), controller.uploadImage);
 module.exports = router;

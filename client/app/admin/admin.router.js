@@ -11,9 +11,9 @@
       controllerAs: 'admin',
       authenticate: 'admin',
       resolve:{
-        menuCollection: function (MenuService) {
+        menuCollection: ['MenuService', function (MenuService) {
           return MenuService.getCollection();
-        }
+        }]
       }
     })
 
@@ -23,6 +23,7 @@
       templateUrl: 'app/admin/document/document.html',
       controller: 'DocumentController',
       controllerAs: 'vm',
+      authenticate: 'admin',
     })
 
     .state('menu', {
@@ -31,6 +32,7 @@
       templateUrl: 'app/admin/menu/menu.html',
       controller: 'MenuController',
       controllerAs: 'vm',
+      authenticate: 'admin',
     })
 
     .state('users', {
@@ -39,6 +41,7 @@
       templateUrl: 'app/admin/user/user.html',
       controller: 'UserController',
       controllerAs: 'vm',
+      authenticate: 'admin',
     })
 
     .state('admin_events', {
@@ -47,6 +50,7 @@
       templateUrl: 'app/admin/event/event.html',
       controller: 'EventController',
       controllerAs: 'vm',
+      authenticate: 'admin',
     })
   });
 

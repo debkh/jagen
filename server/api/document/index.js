@@ -10,10 +10,10 @@ var router = express.Router();
 
 router.get('/', controller.index);
 router.get('/:slug', controller.show);
-router.post('/', multipartyMiddleware, auth.isAuthenticated(), controller.uploadPhoto, controller.create);
-router.put('/:id', multipartyMiddleware, controller.uploadPhoto, controller.update);
+router.post('/', multipartyMiddleware, auth.hasRole('admin'), controller.uploadPhoto, controller.create);
+router.put('/:id', multipartyMiddleware, auth.hasRole('admin'), controller.uploadPhoto, controller.update);
 router.patch('/:id', controller.update);
-router.delete('/:id', controller.destroy);
+router.delete('/:id', auth.hasRole('admin'), controller.destroy);
 
 module.exports = router;
 
