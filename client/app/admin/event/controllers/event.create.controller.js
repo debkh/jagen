@@ -32,8 +32,8 @@
 
       save(form){
           if (form.$valid) {
-              this.event.start = new Date(this.event.start.setDate(this.event.start.getDate()+1));
-              this.event.end = new Date(this.event.end.setDate(this.event.end.getDate()+1));
+              this.event.start = new Date(this.event.start.setDate(this.event.start.getDate() + 1));
+              this.event.end = new Date(this.event.end.setDate(this.event.end.getDate() + 1));
               this.EventService.save(this.event)
               .then((response)=> {
                   this.$mdDialog.hide(response);
