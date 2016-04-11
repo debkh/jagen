@@ -43,19 +43,70 @@ Thing.find({}).remove()
 
 User.find({}).remove()
   .then(() => {
-    User.create({
-      provider: 'local',
-      name: 'Test User',
-      email: 'test@example.com',
-      password: 'test'
-    }, {
+    User.create(
+    {
       provider: 'local',
       role: 'admin',
       name: 'Admin',
       email: 'admin@example.com',
       password: 'admin'
+    },{
+      provider: 'local',
+      name: 'Test User',
+      email: 'test@example.com',
+      password: 'test'
     })
-    .then(() => {
+    .then((res) => {
       console.log('finished populating users');
+      return res;
+    })
+    .then(createDocuments)
+    .then(createMenu);
+  });
+
+function createDocuments(res) {
+  return Document.find({}).remove()
+  .then(() => {
+    return Document.create(
+    {
+      title: 'Document 1',
+      text: 'Document 1 Text',
+      slug: 'document-1',
+      user: res._id
+      // user : ObjectId('5144cf8050f071d979c118a2')
+    },{
+      title: 'Document 2',
+      text: 'Document 2 Text',
+      slug: 'document-2',
+      user: res._id
+    })
+    .then((res) => {
+      console.log('finished populating documents');
+      return res;
     });
   });
+}
+
+function createMenu(res) {
+  var document = res;
+  return Menu.find({}).remove()
+  .then(() => {
+    return Menu.create({
+      title: 'Menu 1',
+      slug: 'menu-1',
+      type: 'menu'
+    })
+    .then((res) => {
+      Menu.create({
+        title: 'Document',
+        slug: 'document',
+        type: 'document',
+        menu: res._id,
+        document: document._id
+      });
+      console.log('finished populating menu');
+      return res;
+    });
+  });
+}
+
