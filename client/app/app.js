@@ -19,7 +19,8 @@ angular.module('jagenApp', [
   // 'angularFileUpload',
   // 'ngFileUpload',
   'lfNgMdFileInput',
-  'ui.calendar'
+  'ui.calendar',
+  'ngMaterialDatePicker'
 ])
   .config(function($urlRouterProvider, $locationProvider, $mdIconProvider) {
     $urlRouterProvider

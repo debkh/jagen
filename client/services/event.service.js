@@ -32,7 +32,7 @@
       var saveData = {
         id:data._id,
         title:data.title,
-        start:data.start,
+        start:new Date(data.start) + 1,
         end:data.end,
         description:data.description,
       };

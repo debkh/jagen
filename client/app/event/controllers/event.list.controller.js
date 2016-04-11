@@ -2,17 +2,6 @@
 (function(){
 
 class eventListController {
-
-    msg = 'this is message';
-    date = new Date();
-    d = this.date.getDate();
-    m = this.date.getMonth();
-    y = this.date.getFullYear();
-
-    events2 = [
-        {title: 'All Day Event',start: 'Fri Apr 01 2016 00:00:00 GMT+0300 (EEST) '},
-        {title: 'Long Event',start: 'Fri Apr 01 2016 00:00:00 GMT+0300 (EEST) ',end: 'Fri Apr 03 2016 00:00:00 GMT+0300 (EEST) '},
-    ];
     events = [];
 
     uiConfig = {
@@ -57,17 +46,6 @@ class eventListController {
             locals: {event: date},
             controller: 'eventListController',
         }).catch(console.log.bind(console));
-    };
-
-    addEvent() {
-        this.events.push({
-            title: 'Open Sesame',
-            start: new Date(this.y, this.m, 1),
-            end: new Date(this.y, this.m, 3),
-            className: ['openSesame']
-        });
-        console.log(this.events);
-
     };
 
     /**

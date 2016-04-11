@@ -24,6 +24,7 @@
                 <tr md-row
                     md-selvmt="event"
                     md-selvmt-id="{{ event._id }}"
+                    ng-if="vm.evetns"
                     ng-repeat="event in vm.events | orderBy: vm.gridOptions.order">
                     <td md-cell>{{ $index + 1 }}</td>
                     <td md-cell>{{ event.title }}</td>

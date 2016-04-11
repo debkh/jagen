@@ -7,11 +7,12 @@ var EventSchema = new mongoose.Schema({
   description: String,
   start: {
       type: Date,
-      default: Date.now
+      //default: Date.now
   },
   end: {
       type: Date,
-      default: Date.now },
+      //3default: Date.now
+  },
   _user: {
     type: mongoose.Schema.ObjectId,
     ref: 'User'
