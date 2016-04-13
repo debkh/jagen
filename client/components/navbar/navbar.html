@@ -28,6 +28,7 @@
     </div>
     <div flex="30">
       <div style="float: right;">
+        <md-button ui-sref="admin" ng-if="nav.isAdmin()">Admin Panel</md-button>
         <md-button ui-sref="signup" ng-if="!nav.isLoggedIn()">Sign up</md-button>
         <md-button ui-sref="login" ng-if="!nav.isLoggedIn()">Login</md-button>
         <md-button ui-sref="logout" ng-if="nav.isLoggedIn()">Logout</md-button>

@@ -1,0 +1,8 @@
+<md-toolbar class="md-theme-light md-warn">
+    <h2 class="md-toolbar-tools">
+        <span>Новости</span>
+    </h2>
+</md-toolbar>
+<md-content class="layout-padding">
+    <div ng-if="vm.eventSources" ui-calendar="vm.uiConfig.calendar" ng-model="vm.eventSources"></div>
+</md-content>

@@ -1,0 +1,42 @@
+<md-dialog aria-label="События"  ng-cloak>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Создание новости</h2>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content">
+            <!--<create-document form-data="formData"></create-document>-->
+            <div layout="column" class="inputdemoErrorsAdvanced" ng-cloak>
+                <md-content layout-padding>
+                    <form name="newForm" ng-submit="vm.save(newForm)" novalidate>
+
+                        <md-input-container class="md-block">
+                            <label>Название</label>
+                            <input ng-required="true" name="title" ng-model="vm.new.title">
+                            <div ng-messages="newForm.title.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <label>Описание</label><br>
+                            <textarea froala="vm.froalaOptions" ng-model="vm.new.description" ng-required="true"
+                                      name="text" aria-label="text-editor">
+                            </textarea>
+                            <div ng-messages="newForm.description.$error"
+                                 ng-if="newForm.description.$touched || newForm.$submitted">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block">
+                            <md-button ng-click="vm.close()" class="md-raised md-primary">Cancel</md-button>
+                            <md-button type="submit" class="md-raised md-primary">Save</md-button>
+                        </md-input-container>
+                    </form>
+                </md-content>
+            </div>
+        </div>
+    </md-dialog-content>
+</md-dialog>

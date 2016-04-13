@@ -47,10 +47,18 @@
     .state('admin_events', {
       parent: 'admin',
       url: '/events',
-      templateUrl: 'app/admin/event/event.html',
+      templateUrl: 'app/admin/event/views/list.html',
       controller: 'EventController',
       controllerAs: 'vm',
       authenticate: 'admin',
+    })
+
+    .state('admin_news', {
+      parent: 'admin',
+      url: '/news',
+      templateUrl: 'app/admin/new/views/list.html',
+      controller: 'NewController',
+      controllerAs: 'vm',
     })
   });
 

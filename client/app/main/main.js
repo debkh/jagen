@@ -4,16 +4,29 @@ angular.module('jagenApp')
 .config(function ($stateProvider) {
   $stateProvider
   .state('main', {
-    url: '/',
+    url: '/main',
     template: `
       <navbar></navbar>
       <main></main>
       <footer></footer>
     `,
-    // resolve:{
-    //   menuCollection: function (MenuService) {
-    //     return MenuService.getCollection();
-    //   }
-    // }
   })
+
+    .state('home', {
+        url: '/',
+        parent: 'main',
+        views: {
+            'content': {
+                templateUrl: 'app/vessel/views/list.html',
+                controller: 'vesselListController',
+                controllerAs: 'vm',
+            }
+        },
+        resolve: {
+            query: function(){
+                return {};
+            }
+        },
+        authenticate: true
+    })
 });
